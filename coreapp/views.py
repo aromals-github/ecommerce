@@ -13,3 +13,5 @@ def about(request):
 def contact(request):
     return render (request,'coreapp/contact.html')
 
+def login(request):
+    return render (request,'coreapp/login.html')
