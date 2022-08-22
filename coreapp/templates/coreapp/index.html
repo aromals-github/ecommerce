@@ -8,7 +8,7 @@
                 <i class="fa fa-envelope mx-2"></i>
                 <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:aromals302@gmail.com@company.com">aromal.com</a>
                 <i class="fa fa-phone mx-2"></i>
-                <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">2422943</a>
+                <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">0474-2422943</a>
             </div>
             <div>
                 <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
@@ -48,6 +48,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Sign In / Sign Up</a>
                     </li>
                 </ul>
             </div>
@@ -195,28 +198,27 @@
 <section class="container py-5">
     <div class="row text-center pt-3">
         <div class="col-lg-6 m-auto">
-            <h1 class="h1">Categories of The Month</h1>
+            <h1 class="h1">Categories for your needs</h1>
             <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.
+               Choose your smart devices according to your needs, here we provide the best products for our customers.......
             </p>
         </div>
     </div>
     <div class="row">
         <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="./assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a>
-            <h5 class="text-center mt-3 mb-3">Watches</h5>
-            <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
+            <a href="#"><img src="{% static 'img/iphone.jpg' %}" class="rounded-circle img-fluid border"></a>
+            <h5 class="text-center mt-3 mb-3">Smart Phones </h5>
+            <p class="text-center"><a class="btn btn-success">Go to Shop</a></p>
         </div>
         <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="./assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a>
-            <h2 class="h5 text-center mt-3 mb-3">Shoes</h2>
-            <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
+            <a href="#"><img src="{% static 'img/smartwatch.jpg' %}" class="rounded-circle img-fluid border"></a>
+            <h2 class="h5 text-center mt-3 mb-3">Smart watches</h2>
+            <p class="text-center"><a class="btn btn-success">Go to Shop</a></p>
         </div>
         <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="./assets/img/category_img_03.jpg" class="rounded-circle img-fluid border"></a>
-            <h2 class="h5 text-center mt-3 mb-3">Accessories</h2>
-            <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
+            <a href="#"><img src="{% static 'img/tablet.jpg' %}" class="rounded-circle img-fluid border"></a>
+            <h2 class="h5 text-center mt-3 mb-3">Tablets</h2>
+            <p class="text-center"><a class="btn btn-success">Go to Shop</a></p>
         </div>
     </div>
 </section>
@@ -228,10 +230,10 @@
     <div class="container py-5">
         <div class="row text-center py-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Featured Product</h1>
+                <h1 class="h1">Premium Products </h1>
                 <p>
-                    Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident.
+                    Top <strong>SELLING </strong> and <strong>TRUSTED</strong> devices in the last few years  are one step away from being 
+                    yours as well.
                 </p>
             </div>
         </div>
@@ -239,7 +241,7 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
                     <a href="shop-single.html">
-                        <img src="./assets/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                        <img src="{% static 'img/gaming.jpg' %}" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
@@ -247,12 +249,12 @@
                                 <i class="text-warning fa fa-star"></i>
                                 <i class="text-warning fa fa-star"></i>
                                 <i class="text-warning fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
+                                <i class="text-warning fa fa-star"></i>
                                 <i class="text-muted fa fa-star"></i>
                             </li>
-                            <li class="text-muted text-right">$240.00</li>
+                            <li class="text-muted text-right"> from Rs.42500/-</li>
                         </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Gym Weight</a>
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">GAMING</a>
                         <p class="card-text">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
                         </p>
@@ -263,7 +265,7 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
                     <a href="shop-single.html">
-                        <img src="./assets/img/feature_prod_02.jpg" class="card-img-top" alt="...">
+                        <img src="{% static 'img/photography.jpg' %}" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
@@ -276,7 +278,7 @@
                             </li>
                             <li class="text-muted text-right">$480.00</li>
                         </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Cloud Nike Shoes</a>
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">PHOTOGRAPHY</a>
                         <p class="card-text">
                             Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo ullamcorper.
                         </p>
@@ -287,7 +289,7 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
                     <a href="shop-single.html">
-                        <img src="./assets/img/feature_prod_03.jpg" class="card-img-top" alt="...">
+                        <img src="{% static 'img/perfo .jpg' %}" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
@@ -300,7 +302,7 @@
                             </li>
                             <li class="text-muted text-right">$360.00</li>
                         </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Summer Addides Shoes</a>
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">APPLE</a>
                         <p class="card-text">
                             Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar sagittis diam, et scelerisque ipsum lobortis nec.
                         </p>
@@ -320,7 +322,7 @@
         <div class="row">
 
             <div class="col-md-4 pt-5">
-                <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
+                <h2 class="h2 text-success border-bottom pb-3 border-light logo">PhonesBuy</h2>
                 <ul class="list-unstyled text-light footer-link-list">
                     <li>
                         <i class="fas fa-map-marker-alt fa-fw"></i>
@@ -398,8 +400,8 @@
             <div class="row pt-2">
                 <div class="col-12">
                     <p class="text-left text-light">
-                        Copyright &copy; 2021 Company Name 
-                        | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+                        Copyright &copy; 2022 
+                        | Designed by <a rel="sponsored" href="" target="_blank">Aromal.S</a>
                     </p>
                 </div>
             </div>
