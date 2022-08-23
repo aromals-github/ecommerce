@@ -5,7 +5,7 @@ def home(request):
     return render(request,'coreapp/index.html')
 
 def shop(request):
-    return render(request, 'coreapp/shop.html')
+    return render(request, 'coreapp/productspage.html')
 
 def about(request):
     return render (request,'coreapp/about.html')
