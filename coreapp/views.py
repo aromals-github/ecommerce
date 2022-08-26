@@ -1,11 +1,16 @@
-from multiprocessing import context
-from django.shortcuts import render
+from email import message
+from django.shortcuts import render,redirect
 from .models import Smart_phone, Smart_watch, Tabs
+
+
+
+
 
 def home(request):
     products = Smart_phone.objects.all()
     context = {"smartphones": products}
     return render(request,'coreapp/index.html')
+
 
 
 def shop(request):
@@ -14,7 +19,6 @@ def shop(request):
     tabs = Tabs.objects.all()
     context = {"smartphones": phones, "smartwatches":watches, "tabs":tabs}
     return render(request, 'coreapp/productspage.html',context)
-
 
 def shop_smartphones(request):
     phones =Smart_phone.objects.all()
