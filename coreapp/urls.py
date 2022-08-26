@@ -9,4 +9,5 @@ urlpatterns = [
     path ('about/' ,views.about , name = "about"),
     path ('shop/' ,views.shop , name = "shop"),
     path ('login/' ,views.login,name ="login"),
+    path ('shop/smartphones', views.shop_smartphones,name="shop_smartphones"),
 ]
