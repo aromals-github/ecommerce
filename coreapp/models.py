@@ -2,6 +2,13 @@ from django.db import models
 from django.core.validators import MaxValueValidator,MinValueValidator
 from django.contrib.auth.models import AbstractUser
 
+# class Companies(models.Model):
+#     company_name = models.CharField(max_length=30,null=True)
+#     company_id = models.IntegerField(max_length=20,null=True)
+#     company_bio =models.TextField(max_length=200)
+
+
+
 class Smart_phone(models.Model):
     brand = models.CharField( max_length=30, null=False)
     phone_name = models.CharField( max_length=50, null=False, primary_key=True)
