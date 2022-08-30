@@ -38,6 +38,14 @@ def shop_tablets(request):
     return render (request, 'coreapp/productspage.html',context)
 
 
+def item(request):
+    phones = Smart_phone.objects.all()
+    watches = Smart_watch.objects.all()
+    tabs = Tabs.objects.all()
+    context = {"smartphones": phones, "smartwatches":watches, "tabs":tabs}
+    return render (request,'coreapp/item.html',context)
+
+
 def about(request):
     return render (request,'coreapp/about.html')
 
