@@ -17,6 +17,8 @@ class Smart_phone(models.Model):
     storage = models.IntegerField( default=128,validators=[MaxValueValidator(512),MinValueValidator(128)])
     price = models.DecimalField( max_digits=15, decimal_places=2,default=0.0)   
     instock_count =models.IntegerField(null=True)
+    description =models.CharField( max_length=200,default='')
+    
     
     def __str__(self) :
         return self.phone_name
@@ -32,6 +34,8 @@ class Smart_watch(models.Model):
     size = models.IntegerField()
     price = models.DecimalField(max_digits=15,decimal_places=2,default=0)    
     instock_count = models.IntegerField(null=True)
+    description = models.CharField(max_length=200,default='')
+    
     
     def __str__(self) :
         return self.watch_name
@@ -47,6 +51,7 @@ class Tabs(models.Model):
     price = models.DecimalField(max_digits=15,decimal_places=2,default=0.0) 
     instock_count = models.IntegerField(null=True)
     storage = models.IntegerField(default=128,validators=[MinValueValidator(128),MaxValueValidator(1024)])
+    description =models.CharField( max_length=200 ,default='')
     
     
     def __str__(self) :
