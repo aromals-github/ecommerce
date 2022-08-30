@@ -2,377 +2,96 @@
 {% load static %}
 
 {% block content %}
-
-
-
-
 <div class="item_list">
     <div class="container">
-        <div id="backTotop"><i class="fa fa-angle-up"></i></div>
+        <div id="backTotop">
+            <i class="fa fa-angle-up"></i>
+        </div>
         <div class="filter_item my-3">
+           
             <div class="total_item">
-                Total - <span>24 items</span>
+               TOTAL ITEMS  - <span>later </span>
             </div>
-            <div class="filter_icons">
+           
+            <!-- <div class="filter_icons">
                 <div class="list_thumb">
                     <i class="fa fa-th-list"></i>
                     <i class="fa fa-th-large"></i>
-                </div>
-                <div class="filter_option">
+                </div> -->
+                <!-- <div class="filter_option">
                     <select id="filter_option_">'
                         <option>Price: Low to High</option>
                         <option selected>Price: High to Low</option>
                     </select>
-                </div>
-            </div>
+                </div> -->
         </div>
+    </div>
         <div class="row fade-content">
+        {% for smart_phone in smartphones %}
             <div class="col-6 col-lg-4 mb-3">
                 <div class="card">
                     <div class="card_header">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                        <img src="{% static 'img/product-images/google6.jpg' %}">
+                        <!-- <img src="{{ smart_phone.phone_images.url  }}"> -->
+                        <img src="{{ smart_phone.phone_images.url  }}">
+                        <img src="{{ smart_phone.phone_images.url  }}">    
                     </div>
-                    <!-- <div class="button_block">
-                        <div class="item view"><i class="fa fa-eye"></i></div>
-                        <div class="item wishlist"><i class="fa fa-heart-o"></i></div>
-                        <div class="item compare"><i class="fa fa-signal"></i></div>
-                    </div> -->
+
                     <div class="card_footer">
-                        <h3>Lorem ipsum dolor sit amet.</h3>
+                            <h3><strong>{{smart_phone.brand}} </strong>{{smart_phone.phone_name}}</h3>
+                            <div class="price">
+                                {{smart_phone.price}}₹
+                            </div>
+                            <div class="add_to_cart">
+                                <a style="color: white"  href="">BUY NOW</a>
+                            </div>
+                    </div> 
+                </div> 
+            </div>   
+        {% endfor %}
+        {% for smartwatch in smartwatches %}
+        <div class="col-6 col-lg-4 mb-3">
+            <div class="card">
+
+                <div class="card_header">
+                    <!-- <img src="{{ smart_phone.phone_images.url  }}"> -->
+                    <img src="{{ smartwatch.watch_images.url  }}">
+                    <img src="{{ smart_phone.watch_images.url  }}">    
+                </div>
+
+                <div class="card_footer">
+                        <h3><strong>{{smartwatch.brand}} </strong>{{smartwatch.watch_name}}</h3>
                         <div class="price">
-                            25.00$
+                            {{smartwatch.price}}₹
                         </div>
                         <div class="add_to_cart">
-                            <a style="color: grey"  href="{% url 'home' %}">Add To Cart</a>
-                            
+                            <a style="color: white"  href="">BUY NOW</a>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-4 mb-3">
-                <div class="card">
-                    <div class="card_header">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                    </div>
-                    <div class="button_block">
-                        <div class="item view"><i class="fa fa-eye"></i></div>
-                        <div class="item wishlist"><i class="fa fa-heart-o"></i></div>
-                        <div class="item compare"><i class="fa fa-signal"></i></div>
-                    </div>
-                    <div class="card_footer">
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <div class="price">
-                            25.00$
-                        </div>
-                        <div class="add_to_cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            Add To Cart
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-4 mb-3">
-                <div class="card">
-                    <div class="card_header">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                    </div>
-                    <div class="button_block">
-                        <div class="item view"><i class="fa fa-eye"></i></div>
-                        <div class="item wishlist"><i class="fa fa-heart-o"></i></div>
-                        <div class="item compare"><i class="fa fa-signal"></i></div>
-                    </div>
-                    <div class="card_footer">
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <div class="price">
-                            25.00$
-                        </div>
-                        <div class="add_to_cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            Add To Cart
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-4 mb-3">
-                <div class="card">
-                    <div class="card_header">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                    </div>
-                    <div class="button_block">
-                        <div class="item view"><i class="fa fa-eye"></i></div>
-                        <div class="item wishlist"><i class="fa fa-heart-o"></i></div>
-                        <div class="item compare"><i class="fa fa-signal"></i></div>
-                    </div>
-                    <div class="card_footer">
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <div class="price">
-                            25.00$
-                        </div>
-                        <div class="add_to_cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            Add To Cart
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-4 mb-3">
-                <div class="card">
-                    <div class="card_header">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                    </div>
-                    <div class="button_block">
-                        <div class="item view"><i class="fa fa-eye"></i></div>
-                        <div class="item wishlist"><i class="fa fa-heart-o"></i></div>
-                        <div class="item compare"><i class="fa fa-signal"></i></div>
-                    </div>
-                    <div class="card_footer">
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <div class="price">
-                            25.00$
-                        </div>
-                        <div class="add_to_cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            Add To Cart
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-4 mb-3">
-                <div class="card">
-                    <div class="card_header">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                    </div>
-                    <div class="button_block">
-                        <div class="item view"><i class="fa fa-eye"></i></div>
-                        <div class="item wishlist"><i class="fa fa-heart-o"></i></div>
-                        <div class="item compare"><i class="fa fa-signal"></i></div>
-                    </div>
-                    <div class="card_footer">
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <div class="price">
-                            25.00$
-                        </div>
-                        <div class="add_to_cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            Add To Cart
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-4 mb-3">
-                <div class="card">
-                    <div class="card_header">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                    </div>
-                    <div class="button_block">
-                        <div class="item view"><i class="fa fa-eye"></i></div>
-                        <div class="item wishlist"><i class="fa fa-heart-o"></i></div>
-                        <div class="item compare"><i class="fa fa-signal"></i></div>
-                    </div>
-                    <div class="card_footer">
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <div class="price">
-                            25.00$
-                        </div>
-                        <div class="add_to_cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            Add To Cart
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-4 mb-3">
-                <div class="card">
-                    <div class="card_header">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                    </div>
-                    <div class="button_block">
-                        <div class="item view"><i class="fa fa-eye"></i></div>
-                        <div class="item wishlist"><i class="fa fa-heart-o"></i></div>
-                        <div class="item compare"><i class="fa fa-signal"></i></div>
-                    </div>
-                    <div class="card_footer">
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <div class="price">
-                            25.00$
-                        </div>
-                        <div class="add_to_cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            Add To Cart
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-4 mb-3">
-                <div class="card">
-                    <div class="card_header">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                    </div>
-                    <div class="button_block">
-                        <div class="item view"><i class="fa fa-eye"></i></div>
-                        <div class="item wishlist"><i class="fa fa-heart-o"></i></div>
-                        <div class="item compare"><i class="fa fa-signal"></i></div>
-                    </div>
-                    <div class="card_footer">
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <div class="price">
-                            25.00$
-                        </div>
-                        <div class="add_to_cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            Add To Cart
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-4 mb-3">
-                <div class="card">
-                    <div class="card_header">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                    </div>
-                    <div class="button_block">
-                        <div class="item view"><i class="fa fa-eye"></i></div>
-                        <div class="item wishlist"><i class="fa fa-heart-o"></i></div>
-                        <div class="item compare"><i class="fa fa-signal"></i></div>
-                    </div>
-                    <div class="card_footer">
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <div class="price">
-                            25.00$
-                        </div>
-                        <div class="add_to_cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            Add To Cart
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-4 mb-3">
-                <div class="card">
-                    <div class="card_header">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                    </div>
-                    <div class="button_block">
-                        <div class="item view"><i class="fa fa-eye"></i></div>
-                        <div class="item wishlist"><i class="fa fa-heart-o"></i></div>
-                        <div class="item compare"><i class="fa fa-signal"></i></div>
-                    </div>
-                    <div class="card_footer">
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <div class="price">
-                            25.00$
-                        </div>
-                        <div class="add_to_cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            Add To Cart
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-4 mb-3">
-                <div class="card">
-                    <div class="card_header">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                    </div>
-                    <div class="button_block">
-                        <div class="item view"><i class="fa fa-eye"></i></div>
-                        <div class="item wishlist"><i class="fa fa-heart-o"></i></div>
-                        <div class="item compare"><i class="fa fa-signal"></i></div>
-                    </div>
-                    <div class="card_footer">
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <div class="price">
-                            25.00$
-                        </div>
-                        <div class="add_to_cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            Add To Cart
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-4 mb-3">
-                <div class="card">
-                    <div class="card_header">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                    </div>
-                    <div class="button_block">
-                        <div class="item view"><i class="fa fa-eye"></i></div>
-                        <div class="item wishlist"><i class="fa fa-heart-o"></i></div>
-                        <div class="item compare"><i class="fa fa-signal"></i></div>
-                    </div>
-                    <div class="card_footer">
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <div class="price">
-                            25.00$
-                        </div>
-                        <div class="add_to_cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            Add To Cart
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-4 mb-3">
-                <div class="card">
-                    <div class="card_header">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                    </div>
-                    <div class="button_block">
-                        <div class="item view"><i class="fa fa-eye"></i></div>
-                        <div class="item wishlist"><i class="fa fa-heart-o"></i></div>
-                        <div class="item compare"><i class="fa fa-signal"></i></div>
-                    </div>
-                    <div class="card_footer">
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <div class="price">
-                            25.00$
-                        </div>
-                        <div class="add_to_cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            Add To Cart
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-4 mb-3">
-                <div class="card">
-                    <div class="card_header">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                        <img src="{% static 'img/product-images/iphone13.pro.jpg' %}">
-                    </div>
-                    <div class="button_block">
-                        <div class="item view"><i class="fa fa-eye"></i></div>
-                        <div class="item wishlist"><i class="fa fa-heart-o"></i></div>
-                        <div class="item compare"><i class="fa fa-signal"></i></div>
-                    </div>
-                    <div class="card_footer">
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <div class="price">
-                            25.00$
-                        </div>
-                        <div class="add_to_cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            Add To Cart
-                        </div>
-                    </div>
-                </div>
+                </div> 
+            </div> 
+        </div>   
+    {% endfor %}
+    {% for tablet in tabs %}
+    <div class="col-6 col-lg-4 mb-3">
+        <div class="card">
+
+            <div class="card_header">
+                <!-- <img src="{{ smart_phone.phone_images.url  }}"> -->
+                <img src="{{ tablet.tablet_images.url }}">
+                <img src="{{ tablet.tablet_images.url }}">    
             </div>
 
+            <div class="card_footer">
+                    <h3><strong>{{tablet.brand}} </strong>{{tablet.tab_name}}</h3>
+                    <div class="price">
+                        {{tablet.price}}₹
+                    </div>
+                    <div class="add_to_cart">
+                        <a style="color: white"  href="">BUY NOW</a>
+                    </div>
+            </div> 
+        </div> 
+    </div>   
+{% endfor %}
         </div>
     </div>
 </div>
