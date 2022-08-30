@@ -5,9 +5,11 @@ from .models import Smart_phone, Smart_watch, Tabs
 
 
 def home(request):
-    products = Smart_phone.objects.all()
-    context = {"smartphones": products}
-    return render(request,'coreapp/index.html')
+    phones = Smart_phone.objects.all()
+    watches = Smart_watch.objects.all()
+    tabs = Tabs.objects.all()
+    context = {"smartphones": phones, "smartwatches":watches, "tabs":tabs}
+    return render(request,'coreapp/index.html',context)
 
 
 
