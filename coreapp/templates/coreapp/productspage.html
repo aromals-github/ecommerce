@@ -32,8 +32,10 @@
                 <div class="card">
                     <div class="card_header">
                         <!-- <img src="{{ smart_phone.phone_images.url  }}"> -->
+                        <a href="{% url 'item' %}">
                         <img src="{{ smart_phone.phone_images.url  }}">
-                        <img src="{{ smart_phone.phone_images.url  }}">    
+                        <img src="{{ smart_phone.phone_images.url  }}">
+                            </a>    
                     </div>
 
                     <div class="card_footer">
@@ -48,14 +50,19 @@
                 </div> 
             </div>   
         {% endfor %}
+
+
+
         {% for smartwatch in smartwatches %}
         <div class="col-6 col-lg-4 mb-3">
             <div class="card">
 
                 <div class="card_header">
                     <!-- <img src="{{ smart_phone.phone_images.url  }}"> -->
-                    <img src="{{ smartwatch.watch_images.url  }}">
-                    <img src="{{ smart_phone.watch_images.url  }}">    
+                    <a href="{% url 'item' %}">
+                            <img src="{{ smartwatch.watch_images.url  }}">
+                            <img src="{{ smart_phone.watch_images.url  }}"> 
+                        </a>   
                 </div>
 
                 <div class="card_footer">
@@ -70,14 +77,19 @@
             </div> 
         </div>   
     {% endfor %}
+
+
+
     {% for tablet in tabs %}
     <div class="col-6 col-lg-4 mb-3">
         <div class="card">
 
             <div class="card_header">
                 <!-- <img src="{{ smart_phone.phone_images.url  }}"> -->
-                <img src="{{ tablet.tablet_images.url }}">
-                <img src="{{ tablet.tablet_images.url }}">    
+                <a href="">
+                    <img src="{{ tablet.tablet_images.url }}">
+                    <img src="{{ tablet.tablet_images.url }}"> 
+                    </a>
             </div>
 
             <div class="card_footer">
@@ -92,6 +104,8 @@
         </div> 
     </div>   
 {% endfor %}
+
+
         </div>
     </div>
 </div>

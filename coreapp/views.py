@@ -46,6 +46,9 @@ def item(request):
     return render (request,'coreapp/item.html',context)
 
 
+
+
+
 def about(request):
     return render (request,'coreapp/about.html')
 
