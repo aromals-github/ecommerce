@@ -1,7 +1,7 @@
 from email import message
 from django.shortcuts import render,redirect
 from .models import Smart_phone, Smart_watch, Tabs
-
+from django.db.models import Q
 
 
 def home(request):
@@ -10,7 +10,6 @@ def home(request):
     tabs = Tabs.objects.all()
     context = {"smartphones": phones, "smartwatches":watches, "tabs":tabs}
     return render(request,'coreapp/index.html',context)
-
 
 
 def shop(request):
@@ -32,21 +31,19 @@ def shop_smartwatches(request):
     context = {"smartwatches": watches}
     return render (request,'coreapp/productspage.html',context)
 
+
 def shop_tablets(request):
     tabs = Tabs.objects.all()
     context = {"tabs": tabs}
     return render (request, 'coreapp/productspage.html',context)
 
 
-def item(request):
+def item(request,pk):
     phones = Smart_phone.objects.all()
     watches = Smart_watch.objects.all()
     tabs = Tabs.objects.all()
     context = {"smartphones": phones, "smartwatches":watches, "tabs":tabs}
     return render (request,'coreapp/item.html',context)
-
-
-
 
 
 def about(request):

@@ -10,7 +10,7 @@
         <div class="filter_item my-3">
            
             <div class="total_item">
-               TOTAL ITEMS  - <span>later </span>
+               TOTAL ITEMS  - <span> 250 </span>
             </div>
            
             <!-- <div class="filter_icons">
@@ -32,7 +32,7 @@
                 <div class="card">
                     <div class="card_header">
                         <!-- <img src="{{ smart_phone.phone_images.url  }}"> -->
-                        <a href="{% url 'item' %}">
+                        <a href="{% url 'item' smart_phone.phone_name %}">
                         <img src="{{ smart_phone.phone_images.url  }}">
                         <img src="{{ smart_phone.phone_images.url  }}">
                             </a>    
@@ -59,7 +59,7 @@
 
                 <div class="card_header">
                     <!-- <img src="{{ smart_phone.phone_images.url  }}"> -->
-                    <a href="{% url 'item' %}">
+                    <a href="{% url 'item' smartwatch.watch_name %}">
                             <img src="{{ smartwatch.watch_images.url  }}">
                             <img src="{{ smart_phone.watch_images.url  }}"> 
                         </a>   
@@ -86,7 +86,7 @@
 
             <div class="card_header">
                 <!-- <img src="{{ smart_phone.phone_images.url  }}"> -->
-                <a href="">
+                <a href="{% url 'item' tablet.tab_name %}">
                     <img src="{{ tablet.tablet_images.url }}">
                     <img src="{{ tablet.tablet_images.url }}"> 
                     </a>
