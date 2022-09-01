@@ -30,16 +30,16 @@
         {% for smart_phone in smartphones %}
             <div class="col-6 col-lg-4 mb-3">
                 <div class="card">
+                    
                     <div class="card_header">
-                        <!-- <img src="{{ smart_phone.phone_images.url  }}"> -->
-                        <a href="{% url 'item' smart_phone.phone_name %}">
-                        <img src="{{ smart_phone.phone_images.url  }}">
-                        <img src="{{ smart_phone.phone_images.url  }}">
-                            </a>    
+                    <a href="{% url 'item' smart_phone.name %}">
+                        <img src="{{ smart_phone.images.url  }}">
+                        <img src="{{ smart_phone.images.url  }}">
+                    </a>   
                     </div>
-
+                 
                     <div class="card_footer">
-                            <h3><strong>{{smart_phone.brand}} </strong>{{smart_phone.phone_name}}</h3>
+                            <h3><strong>{{smart_phone.brand}} </strong>{{smart_phone.name}}</h3>
                             <div class="price">
                                 {{smart_phone.price}}₹
                             </div>
@@ -59,14 +59,14 @@
 
                 <div class="card_header">
                     <!-- <img src="{{ smart_phone.phone_images.url  }}"> -->
-                    <a href="{% url 'item' smartwatch.watch_name %}">
-                            <img src="{{ smartwatch.watch_images.url  }}">
-                            <img src="{{ smart_phone.watch_images.url  }}"> 
+                    <a href="{% url 'item' smartwatch.name %}">
+                            <img src="{{ smartwatch.images.url  }}">
+                            <img src="{{ smart_phone.images.url  }}"> 
                         </a>   
                 </div>
 
                 <div class="card_footer">
-                        <h3><strong>{{smartwatch.brand}} </strong>{{smartwatch.watch_name}}</h3>
+                        <h3><strong>{{smartwatch.brand}} </strong>{{smartwatch.name}}</h3>
                         <div class="price">
                             {{smartwatch.price}}₹
                         </div>
@@ -86,14 +86,14 @@
 
             <div class="card_header">
                 <!-- <img src="{{ smart_phone.phone_images.url  }}"> -->
-                <a href="{% url 'item' tablet.tab_name %}">
-                    <img src="{{ tablet.tablet_images.url }}">
-                    <img src="{{ tablet.tablet_images.url }}"> 
+                <a href="{% url 'item' tablet.name %}">
+                    <img src="{{ tablet.images.url }}">
+                    <img src="{{ tablet.images.url }}"> 
                     </a>
             </div>
 
             <div class="card_footer">
-                    <h3><strong>{{tablet.brand}} </strong>{{tablet.tab_name}}</h3>
+                    <h3><strong>{{tablet.brand}} </strong>{{tablet.name}}</h3>
                     <div class="price">
                         {{tablet.price}}₹
                     </div>

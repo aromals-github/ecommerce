@@ -1,5 +1,6 @@
+from atexit import register
 from email import message
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404, reverse
 from .models import Smart_phone, Smart_watch, Tabs
 from django.db.models import Q
 
@@ -39,12 +40,10 @@ def shop_tablets(request):
 
 
 def item(request,pk):
-    phones = Smart_phone.objects.all()
-    watches = Smart_watch.objects.all()
-    tabs = Tabs.objects.all()
-    context = {"smartphones": phones, "smartwatches":watches, "tabs":tabs}
+    product_detail = Smart_phone.objects.filter(name=pk) or Smart_watch.objects.filter(name=pk) or Tabs.objects.filter(name=pk)
+    context = {'products':product_detail}
     return render (request,'coreapp/item.html',context)
-
+   
 
 def about(request):
     return render (request,'coreapp/about.html')
