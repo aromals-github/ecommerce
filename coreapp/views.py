@@ -1,5 +1,4 @@
-from atexit import register
-from email import message
+
 from django.shortcuts import render,redirect, get_object_or_404, reverse
 from .models import Smart_phone, Smart_watch, Tabs
 from django.db.models import Q
