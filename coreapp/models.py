@@ -2,6 +2,10 @@ from django.db import models
 from django.core.validators import MaxValueValidator,MinValueValidator
 from django.contrib.auth.models import AbstractUser
 
+
+
+
+    
 class Smart_phone(models.Model):
     phone_id = models.CharField(max_length=10,null=False,primary_key=True,default='')
     brand = models.CharField(max_length=30, null=False)
@@ -19,6 +23,12 @@ class Smart_phone(models.Model):
     
     class Meta:
         verbose_name_plural = "Smart Phones"
+
+
+class PhoneInfo(models.Model):
+    phone_id = models.ForeignKey(Smart_phone, on_delete=models.CASCADE,default='',primary_key=True)
+    
+    
 
 class Smart_watch(models.Model):
     watch_id = models.CharField(max_length=20,null=False,default='',primary_key=True)
@@ -38,7 +48,7 @@ class Smart_watch(models.Model):
   
 
 class Tabs(models.Model):
-    tab_id = models.CharField( max_length=20, null=False, primary_key=True)
+    tab_id = models.CharField( max_length=20, null=False, primary_key=True,default='')
     brand = models.CharField( max_length=20, null=False)
     name = models.CharField( max_length=30, null= False)
     colour = models.CharField( max_length=10, null= True)
