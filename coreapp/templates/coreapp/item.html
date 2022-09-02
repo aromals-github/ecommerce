@@ -109,7 +109,8 @@
                     <div class="card">
                         <div class="card-body">
                             {% for product in products %}
-                            <h1 class="h2">{{product.name}}</h1>
+                           
+                            <h1 class="h2"> <strong style="color: grey;">{{product.brand}}</strong> {{product.name}}</h1>
                             <p class="h3 py-2">₹{{product.price}}</p>
                             <p class="py-2">
                                 <i class="fa fa-star text-warning"></i>
