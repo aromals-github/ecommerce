@@ -2,8 +2,6 @@
 {% load static %}
 {% block content %}
   
- 
-
     <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -21,15 +19,14 @@
         </div>
     </div>
 
-
-
     <!-- Open Content -->
     <section class="bg-light">
         <div class="container pb-5">
             <div class="row">
                 <div class="col-lg-5 mt-5">
+                    {% for product in products%}
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="{% static 'img/iphone13.pro.jpg' %}" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="{{ product.images.url }}" alt="Card image cap" id="product-detail">
                     </div>
                     <div class="row">
                         <!--Start Controls-->
@@ -50,17 +47,17 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="{% static 'img/iphone13.pro.jpg' %}" alt="Product Image 1">
+                                                <img class="card-img img-fluid" src="{{ product.images.url }}" alt="Product Image 1">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="{% static 'img/iphone13.pro.jpg' %}" alt="Product Image 2">
+                                                <img class="card-img img-fluid" src="{{ product.images.url }}" alt="Product Image 2">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="{% static 'img/iphone13.pro.jpg' %}" alt="Product Image 3">
+                                                <img class="card-img img-fluid" src="{{ product.images.url }}" alt="Product Image 3">
                                             </a>
                                         </div>
                                     </div>
@@ -72,17 +69,17 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="{% static 'img/iphone13.pro.jpg' %}" alt="Product Image 4">
+                                                <img class="card-img img-fluid" src="{{ product.images.url }}" alt="Product Image 4">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="{% static 'img/iphone13.pro.jpg' %}" alt="Product Image 5">
+                                                <img class="card-img img-fluid" src="{{ product.images.url }}" alt="Product Image 5">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="{% static 'img/iphone13.pro.jpg' %}" alt="Product Image 6">
+                                                <img class="card-img img-fluid" src="{{ product.images.url }}" alt="Product Image 6">
                                             </a>
                                         </div>
                                     </div>
@@ -103,6 +100,7 @@
                         </div>
                         <!--End Controls-->
                     </div>
+                {% endfor %}
                 </div>
                 <!-- col end -->
                 <div class="col-lg-7 mt-5">
@@ -110,7 +108,7 @@
                         <div class="card-body">
                             {% for product in products %}
                            
-                            <h1 class="h2"> <strong style="color: grey;">{{product.brand}}</strong> {{product.name}}</h1>
+                            <h1 class="h2"> <strong style="color: rgb(8, 80, 11);">{{product.brand}}</strong> {{product.name}}</h1>
                             <p class="h3 py-2">₹{{product.price}}</p>
                             <p class="py-2">
                                 <i class="fa fa-star text-warning"></i>
@@ -133,23 +131,25 @@
                             <p>{{ product.description }}</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Avaliable Color :</h6>
+                                    <h6> Color :</h6>
                                 </li>
                                 <li class="list-inline-item">
                                     <p class="text-muted"><strong>{{product.colour}}</strong></p>
                                 </li>
                             </ul>
 
-                            <h6>Specification:</h6>
-                            <ul class="list-unstyled pb-3">
-                                <li>Lorem ipsum dolor sit</li>
-                                <li>Amet, consectetur</li>
-                                <li>Adipiscing elit,set</li>
-                                <li>Duis aute irure</li>
-                                <li>Ut enim ad minim</li>
-                                <li>Dolore magna aliqua</li>
-                                <li>Excepteur sint</li>
+                            <h5>Specification:</h5>
+                            <ul class="list-unstyled pb-3"> 
+                                
+                            {% for specs in product_info%}
+                               {% for feild,value in specs.fields.items %}
+                                    
+                                    <li><strong style="color: green;"> {{ feild}} </strong>  : {{value}}</li>
+                                    
+                                {% endfor %}
+                            {% endfor %}
                             </ul>
+                           
 
                             <form action="" method="GET">
                                 <input type="hidden" name="product-title" value="Activewear">

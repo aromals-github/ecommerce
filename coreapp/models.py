@@ -62,7 +62,7 @@ class Tabs(models.Model):
     brand = models.CharField( max_length=20, null=False)
     name = models.CharField( max_length=30, null= False)
     colour = models.CharField( max_length=10, null= True)
-    images = models.ImageField( upload_to="tablet_image", blank=True)
+    images = models.FileField( upload_to="tablet_image")
     size = models.IntegerField(null=True)
     price = models.DecimalField(max_digits=15,decimal_places=2,default=0.0,null=True) 
     instock = models.IntegerField(null=True)
@@ -74,6 +74,9 @@ class Tabs(models.Model):
         return self.name
     
 class TabInfo (models.Model):
-    tabinfo = models.OneToOneField(Tabs, on_delete= models.CASCADE,default='', primary_key=True)
+    tabinfo = models.OneToOneField(Tabs, on_delete= models.CASCADE,default=" ", primary_key=True)
     ram = models.IntegerField(blank=True, default=8)
-    size = models.DecimalField(max_digits=2, decimal_places=2, blank=True)
+    size = models.DecimalField(max_digits=20, decimal_places=2, blank=True)
+    
+    def __char__(self) :
+        return self.tabinfo
