@@ -80,3 +80,4 @@ class TabInfo (models.Model):
     
     def __char__(self) :
         return self.tabinfo
+    
