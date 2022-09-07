@@ -1,8 +1,7 @@
 
 from django.shortcuts import render,redirect, get_object_or_404, reverse
-from .models import PhoneInfo, Smart_phone, Smart_watch, TabInfo, Tabs, WatchInfo
-from django.db.models import Q
-from django.core import serializers
+from .models import Smart_phone, Smart_watch, Tabs
+
 
 def home(request):
     phones = Smart_phone.objects.all()
@@ -39,15 +38,14 @@ def shop_tablets(request):
 
 
 def item(request,pk):
-   
-    product_detail = Smart_phone.objects.filter(name=pk) or  Smart_watch.objects.filter(name=pk) or Tabs.objects.filter(name=pk)
-
-    product_info_tab = serializers.serialize("python", TabInfo.objects.filter()) 
-        
-    context = { 'products' : product_detail, 'product_info' : product_info_tab}
+    product_detail= Tabs.objects.filter(name=pk)
+    context = { 'products' : product_detail}
     return render (request, 'coreapp/item.html', context)
-   
 
+
+
+  
+        
 def about(request):
     return render (request,'coreapp/about.html')
 
