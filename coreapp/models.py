@@ -12,13 +12,11 @@ class Smart_phone(models.Model):
     storage = models.IntegerField( default=128,validators=[MaxValueValidator(512),MinValueValidator(128)])
     price = models.DecimalField( max_digits=15, decimal_places=2,default=0.0)   
     instock =models.IntegerField( null=True)
-    description =models.CharField( max_length=500,null=True)
+    description =models.CharField( max_length=1000,null=True)
     operating_system = models.CharField(max_length=30,null=True)
     camera = models.DecimalField(null=True, max_digits=5, decimal_places=2)
     
-    
-    
-    def __char__(self) :
+    def __str__(self) :
         return self.name
     
     class Meta:
@@ -34,7 +32,7 @@ class Smart_watch(models.Model):
     size = models.IntegerField()
     price = models.DecimalField( max_digits=15, decimal_places=2, default=0)    
     instock_count = models.IntegerField( null=True)
-    description = models.CharField( max_length=500,null=True)
+    description = models.CharField( max_length=1000,null=True)
     
     def __str__(self) :
         return self.name
@@ -50,7 +48,7 @@ class Tabs(models.Model):
     price = models.DecimalField(max_digits=15,decimal_places=2,default=0.0,null=True) 
     instock = models.IntegerField(null=True)
     storage = models.IntegerField(default=128,validators=[MinValueValidator(128),MaxValueValidator(1024)])
-    description =models.CharField(max_length=500 ,null= True)
+    description =models.CharField(max_length=1000 ,null= True)
     
     
     def __str__(self) :

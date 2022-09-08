@@ -38,10 +38,23 @@ def shop_tablets(request):
 
 
 def item(request,pk):
-    product_detail= Tabs.objects.filter(name=pk)
-    context = { 'products' : product_detail}
-    return render (request, 'coreapp/item.html', context)
-
+   
+    if Tabs.objects.filter(name=pk):
+        product_detail = Tabs.objects.filter(name=pk)
+        context = { 'products' : product_detail}
+        return render (request, 'coreapp/item.html', context)
+    
+    elif Smart_phone.objects.filter(name=pk):
+        product_details = Smart_phone.objects.filter(name=pk)
+        context = { 'products' : product_details}
+        return render (request, 'coreapp/item.html', context)
+    
+    elif Smart_watch.objects.filter(name=pk):
+        product_details = Smart_watch.objects.filter(name=pk)
+        context = { 'products' : product_details}
+        return render (request, 'coreapp/item.html', context)
+    
+          
 
 
   
