@@ -16,7 +16,6 @@ class Smart_phone(models.Model):
     operating_system = models.CharField(max_length=30,null=True)
     camera = models.DecimalField(null=True, max_digits=5, decimal_places=2)
     
-  
     
     def __str__(self) :
         return self.name

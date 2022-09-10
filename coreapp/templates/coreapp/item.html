@@ -108,8 +108,8 @@
                         <div class="card-body">
                             {% for product in products %}
                            
-                            <h1 class="h2"> <strong style="color: rgb(8, 80, 11);">{{product.brand}}</strong> {{product.name}}</h1>
-                            <p class="h3 py-2">₹{{product.price}}</p>
+                            <h1 class="h2"> <strong style="color: rgb(8, 80, 11);">{{product.brand|upper}}</strong> {{product.name}}</h1>
+                            <p class="h3 py-2">₹ {{product.price}} /-</p>
                             <p class="py-2">
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
@@ -123,7 +123,7 @@
                                     <h6>Brand:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>{{product.brand}}</strong></p>
+                                    <p class="text-muted"><strong style="color:rgb(68, 0, 255);">{{product.brand | upper}}</strong></p>
                                 </li>
                             </ul>
 
@@ -134,10 +134,11 @@
                                     <h6> Color :</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>{{product.colour}}</strong></p>
+                                    <p class="text-muted"><strong style="color: rgb(13, 102, 47);">{{ product.colour | upper }}</strong></p>
                                 </li>
                             </ul>
-                            <div>
+
+                        <div>
                             <h5>Specification:</h5>
                             <ul class="list-unstyled pb-3"> 
                             {% for instance in objects %}
@@ -161,7 +162,7 @@
                                             <li class="list-inline-item"><span class="btn btn-success btn-size">128GB</span></li>
                                             <li class="list-inline-item"><span class="btn btn-success btn-size">256GB</span></li>
                                             <li class="list-inline-item"><span class="btn btn-success btn-size">512Gb</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">1TB</span></li>
+                                            
                                         </ul>
                                     </div>
                                     <div class="col-auto">
@@ -218,7 +219,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <a href="{% url 'item' related.name %}" class="h3 text-decoration-none">{{related.brand}} {{ related.name }} </a>
+                            <a href="{% url 'item' related.name %}" class="h3 text-decoration-none"><strong style="color:  rgb(34, 124, 34);">{{related.brand}}  </strong> {{ related.name }} </a>
                             <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                 
                                 <li class="pt-2">
