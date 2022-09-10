@@ -57,11 +57,7 @@ def item(request,pk):
         context = { 'products' : product_details, 'all_items':all_watch}
         return render (request, 'coreapp/item.html', context)
     
-          
 
-
-  
-        
 def about(request):
     return render (request,'coreapp/about.html')
 
