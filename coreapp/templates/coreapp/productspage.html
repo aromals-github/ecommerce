@@ -2,44 +2,47 @@
 {% load static %}
 
 {% block content %}
-<    <!-- Start Content -->
+    <!-- Start Content -->
 <div class="container py-5">
     <div class="row">
 
         <div class="col-lg-3">
-            <h1 class="h2 pb-4">Categories</h1>
+            <h1 class="h2 pb-4"><strong style="color: grey;">Categories</strong></h1>
             <ul class="list-unstyled templatemo-accordion">
                 <li class="pb-3">
                     <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                       <strong style="color: Red;">Smart phones</strong>
+                       <strong style="color: #001f3f;">Smart phones</strong>
                         <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
                     <ul class="collapse show list-unstyled pl-3">
-                        <li><a class="text-decoration-none" href="#"><large style="color: blue;">Samsung</large> </a></li>
-                        <li><a class="text-decoration-none" href="#">Google</a></li>
-                        <li><a class="text-decoration-none" href="#">Apple</a></li>
-                        
+                        <li><a class="text-decoration-none" href="#"><large style="color:#570a51;">Samsung</large> </a></li>
+                        <li><a class="text-decoration-none" href="#"><large style="color: rgb(6, 109, 23);">Apple</large> </a></li>
+                        <li><a class="text-decoration-none" href="#"><large style="color: blue;">Google</large> </a></li>
+                        <li><a class="text-decoration-none" href="#"><large style="color: rgb(255, 0, 0);">Others</large> </a></li>
                     </ul>
                 </li>
                 <li class="pb-3">
                     <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                        Smart watch
+                        <strong style="color: #001f3f;">Smart Watches</strong>
                         <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
                     <ul id="collapseTwo" class="collapse list-unstyled pl-3">
-                        <li><a class="text-decoration-none" href="#">Size 43cm</a></li>
-                        <li><a class="text-decoration-none" href="#">Size 40cm</a></li>
+                        <li><a class="text-decoration-none" href="#"><large style="color:#570a51;">Apple</large> </a></li>
+                        <li><a class="text-decoration-none" href="#"><large style="color: rgb(6, 109, 23);;">Samsung</large> </a></li>
+                        <li><a class="text-decoration-none" href="#"><large style="color: blue;">Google</large> </a></li>
+                        <li><a class="text-decoration-none" href="#"><large style="color: rgb(255, 0, 0);">Others</large> </a></li>
                     </ul>
                 </li>
                 <li class="pb-3">
                     <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                        Tablets
+                        <strong style="color: #001f3f;"> Tablets</strong>
                         <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
                     <ul id="collapseThree" class="collapse list-unstyled pl-3">
-                        <li><a class="text-decoration-none" href="#">Apple ipads</a></li>
-                        <li><a class="text-decoration-none" href="#">Samsung tabs</a></li>
-                        <li><a class="text-decoration-none" href="#">Other</a></li>
+                        <li><a class="text-decoration-none" href="#"><large style="color:#570a51;">Apple iPads</large> </a></li>
+                        <li><a class="text-decoration-none" href="#"><large style="color: rgb(6, 109, 23);;">Samsung Tabs</large> </a></li>
+                        <li><a class="text-decoration-none" href="#"><large style="color: blue;">Xiomi</large> </a></li>
+                        <li><a class="text-decoration-none" href="#"><large style="color: rgb(255, 0, 0);">Others</large> </a></li>
                     </ul>
                 </li>
             </ul>
@@ -50,15 +53,15 @@
                 <div class="col-md-6">
                     <ul class="list-inline shop-top-menu pb-3 pt-1">
                         <li class="list-inline-item">
-                            <a class="h3 text-dark text-decoration-none mr-3" href="#"><small style="color: blue;">All</small></a>
+                            <a class="h3 text-dark text-decoration-none mr-3" href="{% url 'shop' %}"><small style="color: blue;">All</small></a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="h3 text-dark text-decoration-none mr-3" href="#"><small style="color: rgb(255, 38, 0);">Smart phones</small></a>
+                            <a class="h3 text-dark text-decoration-none mr-3" href="{% url 'shop_smartphones' %}"><small style="color: rgb(255, 38, 0);">Smart phones</small></a>
                         <li class="list-inline-item">
-                            <a class="h3 text-dark text-decoration-none" href="#"><small style="color: rgb(23, 153, 62);">Smart watches</small></a>
+                            <a class="h3 text-dark text-decoration-none" href="{% url 'shop_smartwatches' %}"><small style="color: rgb(23, 153, 62);">Smart watches</small></a>
                         </li>
                         <li class="list-inline-item" >
-                            <a class="h3 text-dark text-decoration-none" href="#" > <small style="color: rgb(170, 36, 36);">Tablets</small></a>
+                            <a class="h3 text-dark text-decoration-none" href="{% url 'shop_tablets' %}" > <small style="color: rgb(170, 36, 36);">Tablets</small></a>
                         </li>
                     </ul>
                 </div>
@@ -79,7 +82,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <a href="shop-single.html" class="h3 text-decoration-none">
+                            <a href="{% url 'item' smartphone.name %}" class="h3 text-decoration-none">
                                 <strong style="color: rgb(34, 124, 34);">{{ smartphone.brand}}</strong> {{smartphone.name}}  
                                 <h6 >({{smartphone.storage}} gb)</h6>
                             </a>
@@ -121,7 +124,7 @@
                          </div>
                      </div>
                      <div class="card-body">
-                         <a href="shop-single.html" class="h3 text-decoration-none" >
+                         <a href="{% url 'item' smartwatch.name%}" class="h3 text-decoration-none" >
                                 <strong style="color: rgb(34, 124, 34);">{{ smartwatch.brand}}</strong>  
                                 {{smartwatch.name}}
                                  <h6>({{smartwatch.size}} cm)</h6> 
@@ -164,7 +167,7 @@
                       </div>
                   </div>
                   <div class="card-body">
-                      <a href="shop-single.html" class="h3 text-decoration-none">
+                      <a href="{% url 'item' tablet.name %}" class="h3 text-decoration-none">
                         <strong style="color: rgb(34, 124, 34);">{{ tablet.brand}} </strong>{{tablet.name}}  <h6>({{tablet.storage}} gb)</h6>
                         </a>
                       <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
@@ -193,7 +196,7 @@
        {% endfor %}
 
             </div>
-            <div div="row">
+            <!-- <div div="row">
                 <ul class="pagination pagination-lg justify-content-end">
                     <li class="page-item disabled">
                         <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#" tabindex="-1">1</a>
@@ -205,7 +208,7 @@
                         <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" href="#">3</a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
 
     </div>
@@ -316,7 +319,7 @@
 </section>
 <!--End Brands-->
 
-!-- Start Footer -->
+<!-- Start Footer -->
 <footer class="bg-dark" id="tempaltemo_footer">
     <div class="container">
         <div class="row">
