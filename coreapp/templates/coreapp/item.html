@@ -137,7 +137,7 @@
                                     <p class="text-muted"><strong>{{product.colour}}</strong></p>
                                 </li>
                             </ul>
-
+                            <div>
                             <h5>Specification:</h5>
                             <ul class="list-unstyled pb-3"> 
                             {% for instance in objects %}
@@ -148,10 +148,10 @@
                                 {% endfor %}
                             {% endfor %}
                             </ul>
-                           
+                        </div>
 
                             <form action="" method="GET">
-                                <input type="hidden" name="product-title" value="Activewear">
+                                <input type="hidden" name="product-title" >
                                 <div class="row">
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
