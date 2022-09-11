@@ -3,6 +3,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator,MinValueValidator
 from django.contrib.auth.models import AbstractUser
 from PIL import Image
+
 class Smart_phone(models.Model):
     phone_id = models.CharField(max_length=10, null=False, primary_key=True, default='')
     brand = models.CharField(max_length=30, null=False)
