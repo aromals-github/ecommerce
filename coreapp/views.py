@@ -1,4 +1,3 @@
-
 from django.shortcuts import render,redirect, get_object_or_404, reverse
 from .models import Smart_phone, Smart_watch, Tabs
 
@@ -38,24 +37,24 @@ def shop_tablets(request):
 
 
 def item(request,pk):
-   
-    if Tabs.objects.filter(name=pk):
-        product_detail = Tabs.objects.filter(name=pk)
-        all_tabs = Tabs.objects.all()
-        context = { 'products' : product_detail, 'all_items':all_tabs }
-        return render (request, 'coreapp/item.html', context)
     
-    elif Smart_phone.objects.filter(name=pk):
-        product_details = Smart_phone.objects.filter(name=pk)
-        all_smartphones =Smart_phone.objects.all()
-        context = { 'products' : product_details , 'all_items':all_smartphones}
-        return render (request, 'coreapp/item.html', context)
-    
-    elif Smart_watch.objects.filter(name=pk):
-        product_details = Smart_watch.objects.filter(name=pk)
-        all_watch =Smart_watch.objects.all()
-        context = { 'products' : product_details, 'all_items':all_watch}
-        return render (request, 'coreapp/item.html', context)
+        if Tabs.objects.filter(name=pk):
+            product_detail = Tabs.objects.filter(name=pk)
+            all_tabs = Tabs.objects.all()
+            context = { 'products' : product_detail, 'all_items':all_tabs }
+            return render (request, 'coreapp/item.html', context)
+        
+        elif Smart_phone.objects.filter(name=pk):
+            product_details = Smart_phone.objects.filter(name=pk)
+            all_smartphones =Smart_phone.objects.all()
+            context = { 'products' : product_details , 'all_items':all_smartphones}
+            return render (request, 'coreapp/item.html', context)
+        
+        elif Smart_watch.objects.filter(name=pk):
+            product_details = Smart_watch.objects.filter(name=pk)
+            all_watch =Smart_watch.objects.all()
+            context = { 'products' : product_details, 'all_items':all_watch}
+            return render (request, 'coreapp/item.html', context)
     
 
 def about(request):
