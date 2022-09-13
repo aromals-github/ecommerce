@@ -1,5 +1,9 @@
 from django.shortcuts import render,redirect, get_object_or_404, reverse
 from .models import Smart_phone, Smart_watch, Tabs
+from django.db.models import Q
+
+def login(request):
+    return render (request,'coreapp/login.html')
 
 
 def home(request):
@@ -55,15 +59,17 @@ def item(request,pk):
             all_watch =Smart_watch.objects.all()
             context = { 'products' : product_details, 'all_items':all_watch}
             return render (request, 'coreapp/item.html', context)
-    
+
+
+def add_product(request):
+    return render(request,'home')
+
+
+def cart(request):
+    return render(request,'home')
+
 
 def about(request):
     return render (request,'coreapp/about.html')
 
 
-def contact(request):
-    return render (request,'coreapp/contact.html')
-
-
-def login(request):
-    return render (request,'coreapp/login.html')

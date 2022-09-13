@@ -1,8 +1,18 @@
-from tkinter import CASCADE
+
 from django.db import models
 from django.core.validators import MaxValueValidator,MinValueValidator
 from django.contrib.auth.models import AbstractUser
 from PIL import Image
+
+class User(AbstractUser):
+    username = models.CharField(max_length= 200,null =True,unique=True)
+    email = models.EmailField(unique=True,null=True)
+    
+    
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = [ 'email' ]
+    
+
 
 class Smart_phone(models.Model):
     phone_id = models.CharField(max_length=10, null=False, primary_key=True, default='')
@@ -16,10 +26,13 @@ class Smart_phone(models.Model):
     description =models.CharField( max_length=1000,null=True)
     operating_system = models.CharField(max_length=30,null=True)
     camera = models.DecimalField(null=True, max_digits=5, decimal_places=2)
+
     
-    
-    def __str__(self) :
+    def __str__(self) :         
         return self.name
+
+    def __int__(self) :
+        return self.instock
     
     class Meta:
         verbose_name_plural = "Smart Phones"
