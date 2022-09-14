@@ -15,10 +15,26 @@ def home(request):
 
 
 def shop(request):
+    # searchind enabled
+    q = request.GET.get('q')
+    if request.GET.get('q') != None:
+        products = Smart_phone.objects.filter(
+            Q(name__icontains=q) |
+            Q(phone_id=q)
+        )or Smart_watch.objects.filter(
+            Q(name__icontains=q) |
+            Q(watch_id=q)
+        )or Tabs.objects.filter(
+            Q(name__icontains =q) |
+            Q(tab_id = q)
+        )
+        context = {'products':products}
+        return render(request,'coreapp/productspage.html',context)
+
     phones = Smart_phone.objects.all()
     watches = Smart_watch.objects.all()
     tabs = Tabs.objects.all()
-    context = {"smartphones": phones, "smartwatches":watches, "tabs":tabs}
+    context = {"smartphones": phones, "smartwatches":watches, "tabs":tabs }
     return render(request, 'coreapp/productspage.html',context)
 
 
@@ -59,6 +75,8 @@ def item(request,pk):
             all_watch =Smart_watch.objects.all()
             context = { 'products' : product_details, 'all_items':all_watch}
             return render (request, 'coreapp/item.html', context)
+        
+       
 
 
 def add_product(request):
