@@ -12,4 +12,5 @@ urlpatterns =[
     path ('shop/smartwatches/', views.shop_smartwatches, name = "shop_smartwatches"),
     path ('shop/tablets/', views.shop_tablets,name = "shop_tablets"),
     path ('shop/item/<str:pk>/', views.item, name = "item"),
+    # path ('shop/smartphones/<str:pk>/', views.shop_brand, name="brands")
 ]

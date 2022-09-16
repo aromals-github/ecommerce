@@ -20,7 +20,7 @@ def shop(request):
     if request.GET.get('q') != None:
         products = Smart_phone.objects.filter(
             Q(name__icontains=q) |
-            Q(phone_id=q)
+            Q(phone_id = q) | Q(name__icontains =q) 
         )or Smart_watch.objects.filter(
             Q(name__icontains=q) |
             Q(watch_id=q)
@@ -76,8 +76,6 @@ def item(request,pk):
             context = { 'products' : product_details, 'all_items':all_watch}
             return render (request, 'coreapp/item.html', context)
         
-       
-
 
 def add_product(request):
     return render(request,'home')
