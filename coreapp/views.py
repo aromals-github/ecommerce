@@ -1,17 +1,19 @@
 from django.shortcuts import render,redirect, get_object_or_404, reverse
 from .models import Smart_phone, Smart_watch, Tabs
 from django.db.models import Q
+from django.views import View
+
 
 def login(request):
     return render (request,'coreapp/login.html')
 
-
-def home(request):
-    phones = Smart_phone.objects.all()
-    watches = Smart_watch.objects.all()
-    tabs = Tabs.objects.all()
-    context = {"smartphones": phones, "smartwatches":watches, "tabs":tabs}
-    return render(request,'coreapp/index.html',context)
+class HomeView(View):
+    def get(self,request):
+        phones = Smart_phone.objects.all()
+        watches = Smart_watch.objects.all()
+        tabs = Tabs.objects.all()
+        context = {"smartphones": phones, "smartwatches":watches, "tabs":tabs}
+        return render(request,'coreapp/index.html',context)
 
 
 def shop(request):
@@ -30,13 +32,15 @@ def shop(request):
         )
         context = {'products':products}
         return render(request,'coreapp/productspage.html',context)
-
     phones = Smart_phone.objects.all()
     watches = Smart_watch.objects.all()
     tabs = Tabs.objects.all()
     context = {"smartphones": phones, "smartwatches":watches, "tabs":tabs }
     return render(request, 'coreapp/productspage.html',context)
 
+def branditems(request):
+   
+    return render (request,'coreapp/productspage.html')
 
 def shop_smartphones(request):
     phones = Smart_phone.objects.all()
@@ -57,7 +61,7 @@ def shop_tablets(request):
 
 
 def item(request,pk):
-    
+
         if Tabs.objects.filter(name=pk):
             product_detail = Tabs.objects.filter(name=pk)
             all_tabs = Tabs.objects.all()
@@ -76,7 +80,7 @@ def item(request,pk):
             context = { 'products' : product_details, 'all_items':all_watch}
             return render (request, 'coreapp/item.html', context)
         
-
+        
 def add_product(request):
     return render(request,'home')
 

@@ -31,9 +31,6 @@ class Smart_phone(models.Model):
     def __str__(self) :         
         return self.name
 
-    def __int__(self) :
-        return self.instock
-    
     class Meta:
         verbose_name_plural = "Smart Phones"
         

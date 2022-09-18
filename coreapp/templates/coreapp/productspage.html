@@ -16,7 +16,7 @@
                     </a>
                     
                     <ul class="collapse show list-unstyled pl-3">
-                        <li><a class="text-decoration-none" href="#"><large style="color:#570a51;">Samsung</large> </a></li>
+                        <li><a class="text-decoration-none" href="{% url 'branded' %}"><large style="color:#570a51;">Samsung</large> </a></li>
                         <li><a class="text-decoration-none" href="#"><large style="color: rgb(6, 109, 23);">Apple</large> </a></li>
                         <li><a class="text-decoration-none" href="#"><large style="color: blue;">Google</large> </a></li>
                         <li><a class="text-decoration-none" href="#"><large style="color: rgb(255, 0, 0);">Others</large> </a></li>
@@ -69,6 +69,9 @@
                 </div>
                
             </div>
+
+
+
             <div class="row">
                 {% for smartphone in smartphones %}
                 <div class="col-md-4">
@@ -155,6 +158,7 @@
                  </div>
              </div>
           {% endfor %}
+
           {% for tablet in tabs %}
           <div class="col-md-4">
               <div class="card mb-4 product-wap rounded-0">
@@ -170,7 +174,8 @@
                   </div>
                   <div class="card-body">
                       <a href="{% url 'item' tablet.name %}" class="h3 text-decoration-none">
-                        <strong style="color: rgb(34, 124, 34);">{{ tablet.brand}} </strong>{{tablet.name}}  <h6>({{tablet.storage}} gb)</h6>
+                        <strong style="color: rgb(34, 124, 34);">{{ tablet.brand}} </strong>{{tablet.name}}  
+                        <h6>({{tablet.storage}} gb)</h6>
                         </a>
                       <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                         
@@ -196,7 +201,8 @@
               </div>
           </div>
          {% endfor %}
-         {% for product in products %}
+
+         <!-- {% for product in products %}
           <div class="col-md-4">
               <div class="card mb-4 product-wap rounded-0">
                   <div class="card rounded-0">
@@ -211,7 +217,8 @@
                   </div>
                   <div class="card-body">
                       <a href="{% url 'item' product.name %}" class="h3 text-decoration-none">
-                        <strong style="color: rgb(34, 124, 34);">{{ product.brand}} </strong>{{product.name}}  <h6>({{product.storage}} gb)</h6>
+                        <strong style="color: rgb(34, 124, 34);">{{ product.brand}} </strong>{{product.name}}  
+                        <h6>({{product.storage}} gb)</h6>
                         </a>
                       <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                         
@@ -236,10 +243,10 @@
                   </div>
               </div>
           </div>
-         {% endfor %}
+         {% endfor %}-->
+        </div>
 
-
-            </div>
+        
             <!-- <div div="row">
                 <ul class="pagination pagination-lg justify-content-end">
                     <li class="page-item disabled">
