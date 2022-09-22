@@ -1,7 +1,5 @@
-
 from django.urls import path
 from . import views
-
 
 urlpatterns =[
     path ('' ,views.HomeView.as_view(), name = "home"),
@@ -12,5 +10,5 @@ urlpatterns =[
     path ('shop/smartwatches/', views.shop_smartwatches, name = "shop_smartwatches"),
     path ('shop/tablets/', views.shop_tablets, name = "shop_tablets"),
     path ('shop/item/<str:pk>/', views.item, name = "item"),
-    path ('shop/smartphones/samsung',views.branditems,name = "branded"),
+    path ('shop/smartphones/samsung',views.brand_smartphones,name = "branded_smartphones"),
 ]

@@ -1,4 +1,3 @@
-
 from django.shortcuts import render,redirect, get_object_or_404, reverse
 from .models import Smart_phone, Smart_watch, Tabs
 from django.db.models import Q
@@ -38,8 +37,23 @@ def shop(request):
     return render(request, 'coreapp/productspage.html',context)
 
 
-def branditems(request):
-    return render (request,'coreapp/productspage.html')
+def brand_smartphones(request):
+    pk = 1#others when enabled needs to change
+    if Smart_phone.objects.filter(brand = 'apple')!= None:
+        products = Smart_phone.objects.filter(brand = 'apple') 
+        context = {'products':products}
+        return render (request,'coreapp/productspage.html',context)
+    elif Smart_phone.objects.filter(brand ='samsung') != None:
+        products = Smart_phone.objects.filter(brand = 'samsung') 
+        context = {'products':products}
+        return render (request,'coreapp/productspage.html',context)
+    elif Smart_phone.objects.filter(brand ='google') != None:
+        products = Smart_phone.objects.filter(brand = 'google') 
+        context = {'products':products}
+        return render (request,'coreapp/productspage.html',context)
+    elif pk==1:
+        return render (request,'coreapp/productspage.html')
+
 
 def shop_smartphones(request):
     phones = Smart_phone.objects.all()

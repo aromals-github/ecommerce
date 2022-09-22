@@ -11,6 +11,13 @@ class User(AbstractUser):
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = [ 'email' ]
     
+
+class Brands(models.Model):
+    brands = models.CharField(max_length=200, null=True, blank=True)
+    
+    def __str__(self):
+        return self.brands
+    
     
 class Smart_phone(models.Model):
     phone_id = models.CharField(max_length=10, null=False, primary_key=True, default='')
@@ -32,8 +39,7 @@ class Smart_phone(models.Model):
 
     class Meta:
         verbose_name_plural = "Smart Phones"
-        
-        
+             
 class Smart_watch(models.Model):
     watch_id = models.CharField(max_length=20,null=False,default='',primary_key=True)
     brand = models.CharField( max_length=20, null=False)
