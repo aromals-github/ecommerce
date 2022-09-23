@@ -13,15 +13,14 @@
                        <strong style="color: #001f3f;">Smart phones</strong>
                         <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
-       
                     
                     <ul class="collapse show list-unstyled pl-3">
-                        <li><a class="text-decoration-none" href="{% url 'branded_smartphones'   %}"><large style="color:#570a51;">Samsung</large> </a></li>
-                        <li><a class="text-decoration-none" href="#"><large style="color: rgb(6, 109, 23);">Apple</large> </a></li>
-                        <li><a class="text-decoration-none" href="#"><large style="color: blue;">Google</large> </a></li>
-                        <li><a class="text-decoration-none" href="#"><large style="color: rgb(255, 0, 0);">Others</large> </a></li>
+                        <li><a class="text-decoration-none" href="{% url 'branded_smartphones' 'apple' %}"><large style="color:#570a51;">Apple</large> </a></li>
+                        <li><a class="text-decoration-none" href="{% url 'branded_smartphones' 'samsung' %}"><large style="color: rgb(6, 109, 23);">Samsung</large> </a></li>
+                        <li><a class="text-decoration-none" href="{% url 'branded_smartphones' 'google' %}"><large style="color: blue;">Google</large> </a></li>
+                        <li><a class="text-decoration-none" href="{% url 'branded_smartphones' 'others' %}"><large style="color: rgb(255, 0, 0);">Others</large> </a></li>
                     </ul>
-                    
+                   
                 </li>
                 <li class="pb-3">
                     <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
@@ -29,10 +28,10 @@
                         <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
                     <ul id="collapseTwo" class="collapse list-unstyled pl-3">
-                        <li><a class="text-decoration-none" href="#"><large style="color:#570a51;">Apple</large> </a></li>
-                        <li><a class="text-decoration-none" href="#"><large style="color: rgb(6, 109, 23);;">Samsung</large> </a></li>
-                        <li><a class="text-decoration-none" href="#"><large style="color: blue;">Google</large> </a></li>
-                        <li><a class="text-decoration-none" href="#"><large style="color: rgb(255, 0, 0);">Others</large> </a></li>
+                        <li><a class="text-decoration-none" href="{% url 'branded_watches' 'apple' %}"><large style="color:#570a51;">Apple</large> </a></li>
+                        <li><a class="text-decoration-none" href="{% url 'branded_watches' 'samsung' %}"><large style="color: rgb(6, 109, 23);;">Samsung</large> </a></li>
+                        <li><a class="text-decoration-none" href="{% url 'branded_watches' 'google' %}"><large style="color: blue;">Google</large> </a></li>
+                        <li><a class="text-decoration-none" href="{% url 'branded_watches' 'others' %}"><large style="color: rgb(255, 0, 0);">Others</large> </a></li>
                     </ul>
                 </li>
                 <li class="pb-3">
@@ -41,10 +40,10 @@
                         <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
                     <ul id="collapseThree" class="collapse list-unstyled pl-3">
-                        <li><a class="text-decoration-none" href="#"><large style="color:#570a51;">Apple iPads</large> </a></li>
-                        <li><a class="text-decoration-none" href="#"><large style="color: rgb(6, 109, 23);;">Samsung Tabs</large> </a></li>
-                        <li><a class="text-decoration-none" href="#"><large style="color: blue;">Xiomi</large> </a></li>
-                        <li><a class="text-decoration-none" href="#"><large style="color: rgb(255, 0, 0);">Others</large> </a></li>
+                        <li><a class="text-decoration-none" href="{% url 'branded_tabs' 'apple' %}"><large style="color:#570a51;">Apple iPads</large> </a></li>
+                        <li><a class="text-decoration-none" href="{% url 'branded_tabs' 'samsung' %}"><large style="color: rgb(6, 109, 23);;">Samsung Tabs</large> </a></li>
+                        <li><a class="text-decoration-none" href="{% url 'branded_tabs' 'xiomi' %}"><large style="color: blue;">Xiomi</large> </a></li>
+                        <li><a class="text-decoration-none" href="{% url 'branded_tabs' 'others' %}"><large style="color: rgb(255, 0, 0);">Others</large> </a></li>
                     </ul>
            
                 </li>
@@ -87,7 +86,7 @@
                         </div>
                         <div class="card-body">
                             <a href="{% url 'item' product.name %}" class="h3 text-decoration-none">
-                                <strong style="color: rgb(34, 124, 34);">{{ product.brand}}</strong> {{ product.name }}  
+                                <strong style="color: rgb(34, 124, 34);">{{ product.brand |capfirst}}</strong> {{ product.name }}  
                                 <h6 >({{product.storage}}{{product.size}})</h6>
                             </a>
                            

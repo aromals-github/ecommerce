@@ -14,7 +14,6 @@ class User(AbstractUser):
 
 class Brands(models.Model):
     brands = models.CharField(max_length=200, null=True, blank=True)
-    
     def __str__(self):
         return self.brands
     
@@ -33,12 +32,12 @@ class Smart_phone(models.Model):
     camera = models.DecimalField(null=True, max_digits=5, decimal_places=2)
     date_added = models.DateTimeField(default = datetime.now())# has to change to---auto_now_add = True
     
-    
     def __str__(self) :         
         return self.name
 
     class Meta:
         verbose_name_plural = "Smart Phones"
+      
              
 class Smart_watch(models.Model):
     watch_id = models.CharField(max_length=20,null=False,default='',primary_key=True)
@@ -51,7 +50,7 @@ class Smart_watch(models.Model):
     instock_count = models.IntegerField( null=True)
     description = models.CharField( max_length=1000,null=True)
     date_added = models.DateTimeField(default = datetime.now())# has to change to---auto_now_add = True
-    
+
     def __str__(self) :
         return self.name
     
@@ -73,7 +72,7 @@ class Tabs(models.Model):
         if self.images:
             super().save(*args, **kwargs)
             img = Image.open(self.images.path)
-            if img.height>700 or img.weight >700:
+            if img.height>700 :
                 output_size =(480,600)
                 img.thumbnail(output_size)
                 img.save(self.images.path)

@@ -10,5 +10,7 @@ urlpatterns =[
     path ('shop/smartwatches/', views.shop_smartwatches, name = "shop_smartwatches"),
     path ('shop/tablets/', views.shop_tablets, name = "shop_tablets"),
     path ('shop/item/<str:pk>/', views.item, name = "item"),
-    path ('shop/smartphones/samsung',views.brand_smartphones,name = "branded_smartphones"),
+    path ('shop/smartphones/samsung/<str:pk>/',views.brand_smartphones,name = "branded_smartphones"),
+    path ('shop/smartwatches/samsung/<str:pk>/',views.brand_watches,name = "branded_watches"),
+    path ('shop/tablets/samsung/<str:pk>/',views.brand_tabs,name = "branded_tabs"),
 ]
