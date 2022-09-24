@@ -1,3 +1,4 @@
+
 from django.shortcuts import render,redirect, get_object_or_404, reverse
 from .models import Brands, Smart_phone, Smart_watch, Tabs ,Brands
 from django.db.models import Q
@@ -46,7 +47,7 @@ def brand_smartphones(request,pk):
         return render (request,'coreapp/productspage.html',context)
     
     elif id == 'samsung':
-        products = Smart_phone.objects.filter(brand = 'samsung') 
+        products = Smart_phone.objects.filter(brand = 'samsung')
         context = {'products':products}
         return render (request,'coreapp/productspage.html',context)
     
@@ -55,12 +56,11 @@ def brand_smartphones(request,pk):
         context = {'products':products}
         return render (request,'coreapp/productspage.html',context)
     
-    elif id == 'others' :
-        products = Smart_phone.objects.exclude(brand = 'apple')
+    elif id == 'others' : 
+        products = Smart_phone.objects.exclude(brand = 'google')
         context = {'products':products}
         return render (request,'coreapp/productspage.html',context)
-    
-    
+
 def brand_watches(request,pk):
     id = pk 
     if id == 'apple' :
