@@ -23,7 +23,7 @@ def shop(request):
     if request.GET.get('q') != None:
         products = Smart_phone.objects.filter(
             Q(name__icontains = q) |
-            Q(phone_id = q) | Q(name__icontains =q) 
+            Q(phone_id = q) | Q(brand__icontains =q)
         )or Smart_watch.objects.filter(
             Q(name__icontains = q) |
             Q(watch_id=q)
@@ -33,6 +33,7 @@ def shop(request):
         )
         context = {'products':products}
         return render(request,'coreapp/productspage.html',context)
+    
     products = list(chain(Smart_phone.objects.all(),Tabs.objects.all(),Smart_watch.objects.all())) #combains two quries from two models to display at once....
     brand = Brands.objects.all()
     context = {'products':products , 'brands':brand}
@@ -82,7 +83,7 @@ def brand_watches(request,pk):
         products = Smart_watch.objects.exclude(brand = 'apple')
         context = {'products':products}
         return render (request,'coreapp/productspage.html',context)
-   
+
     
 def brand_tabs(request,pk):
     id = pk 
@@ -96,13 +97,13 @@ def brand_tabs(request,pk):
         context = {'products':products}
         return render (request,'coreapp/productspage.html',context)
     
-    elif id == 'google':
-        products = Tabs.objects.filter(brand = 'google') 
+    elif id == 'xiomi':
+        products = Tabs.objects.filter(brand = 'xiomi') 
         context = {'products':products}
         return render (request,'coreapp/productspage.html',context)
     
     elif id == 'others' :
-        products = Tabs.objects.exclude(brand = 'apple')
+        products = Tabs.objects.exclude(brand = 'samsung')
         context = {'products':products}
         return render (request,'coreapp/productspage.html',context)
 
@@ -130,19 +131,19 @@ def item(request,pk):
         if Tabs.objects.filter(name=pk):
             product_detail = Tabs.objects.filter(name=pk)
             all_tabs = Tabs.objects.all()
-            context = { 'products' : product_detail, 'all_items':all_tabs }
+            context = {'products' : product_detail, 'all_items':all_tabs}
             return render (request, 'coreapp/item.html', context)
         
         elif Smart_phone.objects.filter(name=pk):
             product_details = Smart_phone.objects.filter(name=pk)
             all_smartphones =Smart_phone.objects.all()
-            context = { 'products' : product_details , 'all_items':all_smartphones}
+            context = {'products' : product_details , 'all_items':all_smartphones}
             return render (request, 'coreapp/item.html', context)
         
         elif Smart_watch.objects.filter(name=pk):
             product_details = Smart_watch.objects.filter(name=pk)
             all_watch =Smart_watch.objects.all()
-            context = { 'products' : product_details, 'all_items':all_watch}
+            context = {'products' : product_details, 'all_items':all_watch}
             return render (request, 'coreapp/item.html', context)
         
         
