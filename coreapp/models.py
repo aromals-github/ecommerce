@@ -37,8 +37,8 @@ class Smart_phone(models.Model):
 
     class Meta:
         verbose_name_plural = "Smart Phones"
-      
-             
+    
+        
 class Smart_watch(models.Model):
     watch_id = models.CharField(max_length=20,null=False,default='',primary_key=True)
     brand = models.CharField( max_length=20, null=False)
