@@ -1,6 +1,6 @@
 
 from django.shortcuts import render,redirect, get_object_or_404, reverse
-from .models import Brands, Smart_phone, Smart_watch, Tabs ,Brands
+from .models import  Smart_phone, Smart_watch, SmartphoneInfo, Tabs ,User
 from django.db.models import Q
 from django.views import View
 from itertools import chain
@@ -18,7 +18,7 @@ class HomeView(View):
 
 
 def shop(request):
-    # searchind enabled
+    # search enabled
     q = request.GET.get('q')
     if request.GET.get('q') != None:
         products = Smart_phone.objects.filter(
@@ -35,8 +35,7 @@ def shop(request):
         return render(request,'coreapp/productspage.html',context)
     
     products = list(chain(Smart_phone.objects.all(),Tabs.objects.all(),Smart_watch.objects.all())) #combains two quries from two models to display at once....
-    brand = Brands.objects.all()
-    context = {'products':products , 'brands':brand}
+    context = {'products':products }
     return render(request, 'coreapp/productspage.html',context)
 
 
@@ -58,7 +57,7 @@ def brand_smartphones(request,pk):
         return render (request,'coreapp/productspage.html',context)
     
     elif id == 'others' : 
-        products = Smart_phone.objects.exclude(brand = 'google')
+        products = Smart_phone.objects.filter(~Q(brand='apple'),~Q(brand='samsung'),~Q(brand='google'))
         context = {'products':products}
         return render (request,'coreapp/productspage.html',context)
 
@@ -80,7 +79,7 @@ def brand_watches(request,pk):
         return render (request,'coreapp/productspage.html',context)
     
     elif id == 'others' :
-        products = Smart_watch.objects.exclude(brand = 'apple')
+        products = Smart_watch.objects.filter(~Q(brand='apple'),~Q(brand='samsung'),~Q(brand ='google'))
         context = {'products':products}
         return render (request,'coreapp/productspage.html',context)
 
@@ -103,7 +102,7 @@ def brand_tabs(request,pk):
         return render (request,'coreapp/productspage.html',context)
     
     elif id == 'others' :
-        products = Tabs.objects.exclude(brand = 'samsung')
+        products = Tabs.objects.filter(~Q(brand='apple'),~Q(brand='samsung'),~Q(brand='xiomi'))
         context = {'products':products}
         return render (request,'coreapp/productspage.html',context)
 
@@ -130,19 +129,20 @@ def item(request,pk):
     
         if Tabs.objects.filter(name=pk):
             product_detail = Tabs.objects.filter(name=pk)
-            all_tabs = Tabs.objects.all()
+            all_tabs = Tabs.objects.filter(~Q(name=pk))
             context = {'products' : product_detail, 'all_items':all_tabs}
             return render (request, 'coreapp/item.html', context)
         
         elif Smart_phone.objects.filter(name=pk):
             product_details = Smart_phone.objects.filter(name=pk)
-            all_smartphones =Smart_phone.objects.all()
-            context = {'products' : product_details , 'all_items':all_smartphones}
+            all_smartphones =Smart_phone.objects.filter(~Q(name=pk))
+            product_info = SmartphoneInfo.objects.all()
+            context = {'products' : product_details , 'all_items':all_smartphones, 'specs':product_info}
             return render (request, 'coreapp/item.html', context)
         
         elif Smart_watch.objects.filter(name=pk):
             product_details = Smart_watch.objects.filter(name=pk)
-            all_watch =Smart_watch.objects.all()
+            all_watch =Smart_watch.objects.filter(~Q(name=pk))
             context = {'products' : product_details, 'all_items':all_watch}
             return render (request, 'coreapp/item.html', context)
         

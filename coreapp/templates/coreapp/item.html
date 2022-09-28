@@ -121,10 +121,10 @@
                         <div>
                             <h5>Specification:</h5>
                             <ul class="list-unstyled pb-3"> 
-                            {% for instance in objects %}
-                                {% for key,value in instance.items %}
+                            {% for product in product_info %}
+                                {% for field,value in product.fields.iteritems %}
                                     
-                                    <li><strong style="color: green;"> 2{{  key }} </strong>  : {{ value }}</li>
+                                    <li><strong style="color: green;"> 2{{field}} </strong>  : {{ value }}</li>
                                     
                                 {% endfor %}
                             {% endfor %}
