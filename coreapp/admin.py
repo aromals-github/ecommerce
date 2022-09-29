@@ -1,13 +1,10 @@
 from django.contrib import admin
-from .models import Smart_phone,Smart_watch,Tabs,User,SmartphoneInfo
-
-admin.site.register(User)
+from .models import Smart_phone,Smart_watch,Tabs,User
 
 
-@admin.register(SmartphoneInfo)
-class SmartphoneInfo(admin.ModelAdmin):
-    list_display =('info','ram')
-    
+@admin.register(User)
+class User(admin.ModelAdmin):
+    list_display= ('username','email')
 
 @admin.register(Smart_phone)
 class Smartphones(admin.ModelAdmin):
@@ -17,7 +14,6 @@ class Smartphones(admin.ModelAdmin):
 @admin.register(Smart_watch)
 class Smartwatch(admin.ModelAdmin):
     list_display = ('brand','name','colour','size')
-   
     
 @admin.register(Tabs)
 class Tablets(admin.ModelAdmin):

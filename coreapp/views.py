@@ -1,12 +1,50 @@
-
-from django.shortcuts import render,redirect, get_object_or_404, reverse
-from .models import  Smart_phone, Smart_watch, SmartphoneInfo, Tabs ,User
+from django.shortcuts import render,redirect
+from django.contrib import messages
+from coreapp.forms import UserCreation
+from .models import  Smart_phone, Smart_watch, Tabs ,User
 from django.db.models import Q
 from django.views import View
 from itertools import chain
+from django.forms.models import model_to_dict
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 
-def login(request):
-    return render (request,'coreapp/login.html')
+
+def login_register(request):
+    form = UserCreation()
+    if request.method == 'POST':
+       form = UserCreation(request.POST)
+       if form.is_valid():
+            user = form.save(commit= True)
+            user.username = user.username.lower()
+            user.save()
+            login(request,user)
+            return redirect('home')
+       else:
+            messages.error(request,'An Error Occured During Registration')  
+            
+    page = 'login'
+    if request.user.is_authenticated:
+        return redirect('home')
+    
+    if request.method =='POST':
+        email = request.POST.get('email').lower()
+        password =request.POST.get('password')
+        
+        try:
+            user = User.objects.get(email=email)
+        except:
+            messages.error(request,'User does not exits')
+        
+        user = authenticate(request,username = email,password =password)
+        
+        if user is not None:
+            login (request,user)
+            return redirect('home')
+        else:
+            messages.error(request,'does not exits')
+    context={'page':page}
+    return render(request, 'coreapp/login.html', {'form': form},context)
 
 class HomeView(View):
     def get(self,request):
@@ -136,13 +174,14 @@ def item(request,pk):
         elif Smart_phone.objects.filter(name=pk):
             product_details = Smart_phone.objects.filter(name=pk)
             all_smartphones =Smart_phone.objects.filter(~Q(name=pk))
-            product_info = SmartphoneInfo.objects.all()
-            context = {'products' : product_details , 'all_items':all_smartphones, 'specs':product_info}
+            specs = Smart_phone.objects.filter(name=pk).values('ram','camera')
+            print(specs)
+            context = {'products' : product_details , 'all_items':all_smartphones, 'specs':specs}
             return render (request, 'coreapp/item.html', context)
         
         elif Smart_watch.objects.filter(name=pk):
             product_details = Smart_watch.objects.filter(name=pk)
-            all_watch =Smart_watch.objects.filter(~Q(name=pk))
+            all_watch = Smart_watch.objects.filter(~Q(name=pk))
             context = {'products' : product_details, 'all_items':all_watch}
             return render (request, 'coreapp/item.html', context)
         

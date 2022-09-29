@@ -121,41 +121,17 @@
                         <div>
                             <h5>Specification:</h5>
                             <ul class="list-unstyled pb-3"> 
-                            {% for product in product_info %}
-                                {% for field,value in product.fields.iteritems %}
-                                    
-                                    <li><strong style="color: green;"> 2{{field}} </strong>  : {{ value }}</li>
-                                    
+                                {% for i in specs %}
+                                    <li><strong style="color: green;"> {{i}} </strong>  : {{i.ram}}</li>
                                 {% endfor %}
-                            {% endfor %}
                             </ul>
                         </div>
 
                             <form action="" method="GET">
                                 <input type="hidden" name="product-title" >
                                 <div class="row">
-                                    <div class="col-auto">
-                                        <ul class="list-inline pb-3">
-                                            <li class="list-inline-item">Storage :
-                                                <input type="hidden" name="product-size" id="product-size" value="S">
-                                            </li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">128GB</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">256GB</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">512Gb</span></li>
-                                            
-                                        </ul>
-                                    </div>
-                                    <div class="col-auto">
-                                        <ul class="list-inline pb-3">
-                                            <li class="list-inline-item text-right">
-                                                Quantity
-                                                <input type="hidden" name="product-quanity" id="product-quanity" value="1">
-                                            </li>
-                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
-                                            <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
-                                        </ul>
-                                    </div>
+                                   
+                                   
                                 </div>
                                 <div class="row pb-3">
                                     <div class="col d-grid">
