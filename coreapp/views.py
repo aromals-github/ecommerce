@@ -11,43 +11,52 @@ from django.contrib.auth.decorators import login_required
 
 
 def login_register(request):
-    form = UserCreation()
-    if request.method == 'POST':
-       form = UserCreation(request.POST)
-       if form.is_valid():
-            user = form.save(commit= True)
-            user.username = user.username.lower()
-            user.save()
-            login(request,user)
-            return redirect('home')
-       else:
-            messages.error(request,'An Error Occured During Registration')  
-            
-    page = 'login'
-    if request.user.is_authenticated:
-        return redirect('home')
     
-    if request.method =='POST':
-        email = request.POST.get('email').lower()
-        password =request.POST.get('password')
+    if request.user.is_authenticated:
+        return redirect('home')  
+    form = UserCreation()           
+    if  request.method =="POST":
+        if request.POST.get('submit') == 'login':
+            email = request.POST.get('email').lower()
+            password = request.POST.get('password')
         
-        try:
-            user = User.objects.get(email=email)
-        except:
-            messages.error(request,'User does not exits')
+            try:
+                user = User.objects.get(email=email)
+            except:
+                messages.error(request,'User does not exits')
         
-        user = authenticate(request,username = email,password =password)
+            user = authenticate(request,username = email,password =password)
+      
+            if user is not None:
+                login (request,user)
+                return redirect('home')
+            else:
+                messages.error(request,' user does not exits')
         
-        if user is not None:
-            login (request,user)
-            return redirect('home')
-        else:
-            messages.error(request,'does not exits')
-    context={'page':page}
-    return render(request, 'coreapp/login.html', {'form': form},context)
+        elif request.POST.get('submit') == 'signup':
+           
+            
+            form = UserCreation(request.POST)
+            if form.is_valid():
+                    user = form.save(commit= True)
+                    user.username = user.username.lower()
+                    user.save()
+                    login(request,user)
+                    return redirect('home')
+            else:
+                    messages.error(request,'An Error Occured During Registration')
+                    return render(request, 'coreapp/login.html')
+    return render(request, 'coreapp/login.html',{'form':form})
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('home')
+    
 
 class HomeView(View):
     def get(self,request):
+        
         phones = Smart_phone.objects.all()
         watches = Smart_watch.objects.all()
         tabs = Tabs.objects.all()

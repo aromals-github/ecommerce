@@ -1,82 +1,88 @@
+
 <!DOCTYPE html>
 {% load static%}
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Tech Door</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %} ">
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
-<html lang="es" dir="ltr">
+<html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>Sign in & Sign up Form</title>
   </head>
-  <body>
-  
  
+  <body>
+    <nav>
+        <a href="{% url 'home'%}" style="text-decoration: none ">
+            <button>home</button>
+        </a>
+    </nav>
 
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form  class="sign-in-form" action="" method="POST">
+            {% csrf_token %}
+            <h2 class="title">Sign in</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Username" name="email" id ="username" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" name="password" type="password" />
+            </div>
+            <!-- <input type="submit"  class="btn solid" name="login" value ="login"/> -->
+            <button type ="submit" name="submit" value="login">sign in</button>
+          </form>
 
-    <div class="main">
-    
-  
-      <div class="container a-container" id="a-container">
-        <form class="form" id="a-form" method="POST" action="">
-          <h2 class="form_title title">Create Account</h2>
-
-          {% csrf_token %}
-          {% for field in form %}
-              <!-- <strong>{{field.label}} </strong> <input class="form__input"> -->
-              <label>{{field.label}}   {{field}}</label>
-              <br>
-          {% endfor %}
-          <button type="submit"  value="login">
-            SIGN UP
-          </button>
-        </form>
-       
-      </div>
-      {% if page == 'login' %}
-      <div class="container b-container" id="b-container">
-        
-        <form class="form" id="b-form" method="POST" action="">
-          {% csrf_token %}
-          <h2 class="form_title title">Sign in to Website</h2>
-          <label placeholder="Email"></label>
-          <label placeholder="Password"></label>
-          <a class="form__link">Forgot your password?</a>
-          <button  type = "submit" >SIGN IN</button>
-        </form>
-      </div>
-      {% endif %}
-      <div class="switch" id="switch-cnt">
-        <div class="switch__circle"></div>
-        <div class="switch__circle switch__circle--t"></div>
-        <div class="switch__container" id="switch-c1">
-          <h2 class="switch__title title">Already A User !</h2>
-          <p class="switch__description description">To keep on shopping</p>
-          <button class="switch__button button switch-btn">SIGN IN</button>
+          <form action="" class="sign-up-form" method="POST">
+            {% csrf_token %}
+            <h2 class="title">Sign up</h2>
+            {% for field in form %}
+              <div>
+                <i class="fas fa-user"></i>
+                <label > {{field.label}} <large>:</large> {{field}}</label>
+              </div>
+            {% endfor %}
+            <!-- <input type="submit" class="btn" value="Sign up" /> -->
+            <button type ="submit" name="submit" value="signup">sign up</button>
+          </form>
         </div>
+      </div>
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+           
+            <h3>New here ?</h3>
+            <p>
+              Sign up for Brand new offers on smartphones, smart watches and tabs. 
+            </p>
+            <button class="btn transparent" id="sign-up-btn">
+              Sign up
+            </button>
         
-        <div class="switch__container is-hidden" id="switch-c2">
-          <h2 class="switch__title title">New customer !</h2>
-          <p class="switch__description description">Enter your personal details and start journey with us</p>
-          <button class="switch__button button switch-btn">SIGN UP</button>
+          </div>
+          <img src="{% static 'img/log.svg' %}" class="image" alt="" />
+        </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <h3>Alreay a Customer ?</h3>
+            <p>
+              Login to continue where you left you cart. ENJOY
+            </p>
+            <button class="btn transparent" id="sign-in-btn">
+              Sign in
+            </button>
+          </div>
+          <img src="{% static 'img/register.svg' %}" class="image" alt="" />
         </div>
       </div>
     </div>
-    
-  </body>
-  <li >
-   <h2><a  href="{% url 'home' %}" style="text-decoration: none;" ><small style="color: blue;">home</small></a></h2> 
-</li>
-</html>
-<!-- partial -->
-  <script  src="{% static 'js/script.js' %}"></script>
 
-</body>
+    <script src="{% static 'js/app.js' %}"></script>
+  </body>
 </html>
