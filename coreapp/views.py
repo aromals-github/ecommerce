@@ -34,8 +34,6 @@ def login_register(request):
                 messages.error(request,' user does not exits')
         
         elif request.POST.get('submit') == 'signup':
-           
-            
             form = UserCreation(request.POST)
             if form.is_valid():
                     user = form.save(commit= True)
@@ -172,6 +170,7 @@ def shop_tablets(request):
     return render (request, 'coreapp/productspage.html',context)
 
 
+@login_required(login_url ='login')
 def item(request,pk):
     
         if Tabs.objects.filter(name=pk):
@@ -184,7 +183,6 @@ def item(request,pk):
             product_details = Smart_phone.objects.filter(name=pk)
             all_smartphones =Smart_phone.objects.filter(~Q(name=pk))
             specs = Smart_phone.objects.filter(name=pk).values('ram','camera')
-            print(specs)
             context = {'products' : product_details , 'all_items':all_smartphones, 'specs':specs}
             return render (request, 'coreapp/item.html', context)
         
@@ -194,9 +192,6 @@ def item(request,pk):
             context = {'products' : product_details, 'all_items':all_watch}
             return render (request, 'coreapp/item.html', context)
         
-        
-def add_product(request):
-    return render(request,'home')
 
 
 def cart(request):

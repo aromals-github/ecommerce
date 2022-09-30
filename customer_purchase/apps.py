@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class AdminControlsConfig(AppConfig):
+class CustomerPurchaseConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'admin_controls'
+    name = 'customer_purchase'

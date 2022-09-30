@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'coreapp.apps.CoreappConfig',
-    'admin_controls.apps.AdminControlsConfig',
+    'customer_purchase.apps.CustomerPurchaseConfig',
 ]
 
 
