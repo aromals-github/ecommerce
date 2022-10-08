@@ -127,21 +127,18 @@
                             </ul>
                         </div>
 
-                            <form action="" method="GET">
-                                <input type="hidden" name="product-title" >
-                                <div class="row">
-                                   
-                                   
-                                </div>
+                        
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy Now</button>
+                                      
+                                            <button type="submit" class="btn btn-success btn-lg" name="submit" value="{{path__href}}" onclick="location.href='{% url 'cart' product.name %}'">Add to cart</button>
+                                        
                                     </div>
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button>
+                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Buy Now</button>
                                     </div>
                                 </div>
-                            </form>
+                            
                         {% endfor %}
                         </div>
                     </div>

@@ -194,8 +194,9 @@ def item(request,pk):
         
 
 
-def cart(request):
-    return render(request,'home')
+@login_required(login_url ='login')
+def cart(request,pk):
+    return render(request,'coreapp/cart.html')
 
 
 def about(request):
