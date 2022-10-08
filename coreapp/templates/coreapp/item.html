@@ -130,12 +130,14 @@
                         
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                      
-                                            <button type="submit" class="btn btn-success btn-lg" name="submit" value="{{path__href}}" onclick="location.href='{% url 'cart' product.name %}'">Add to cart</button>
-                                        
+                                            <a href="{% url 'cart' product.name %}">
+                                                <input style="text-align: center;" type="submit" class="btn btn-success btn-lg" name="submit" value="Add to Cart" ></input>
+                                            </a> 
                                     </div>
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Buy Now</button>
+                                        <a href="#">
+                                        <input type="submit" class="btn btn-success btn-lg" name="submit" value="Buy Now"></input>
+                                    </a>
                                     </div>
                                 </div>
                             

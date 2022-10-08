@@ -42,7 +42,7 @@ class Smart_watch(models.Model):
     images = models.ImageField( upload_to="watch_image", blank=True)
     size = models.IntegerField()
     price = models.DecimalField( max_digits=15, decimal_places=2, default=0)    
-    instock_count = models.IntegerField( null=True)
+    instock = models.IntegerField( null=True)
     description = models.CharField( max_length=1000,null=True)
     date_added = models.DateTimeField(default = datetime.now())# has to change to---auto_now_add = True
 

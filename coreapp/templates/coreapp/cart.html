@@ -7,7 +7,10 @@
     <div>
         <img src=" " alt="" class="cart__img">
         <div class="product__info" ">
-            product inf0
+            {% for product in product %}
+                {{product.name}}
+
+            {% endfor %}
         </div>
     </div>
     

@@ -196,8 +196,36 @@ def item(request,pk):
 
 @login_required(login_url ='login')
 def cart(request,pk):
-    return render(request,'coreapp/cart.html')
-
+    if Smart_phone.objects.filter(name=pk):
+        product = Smart_phone.objects.filter(name=pk)
+        items = product
+        for item in items:
+            if item.instock>0 :   
+                context ={'product':product}
+                return render(request,'coreapp/cart.html',context)
+            else:
+                return render(request,'coreapp/home')
+    
+    elif Tabs.objects.filter(name=pk):
+        product = Tabs.objects.filter(name=pk)
+        items = product
+        for item in items:
+            if item.instock>0 :   
+                context ={'product':product}
+                return render(request,'coreapp/cart.html',context)
+            else:
+                return render(request,'coreapp/home')
+            
+    elif Smart_watch.objects.filter(name=pk):
+        product = Smart_watch.objects.filter(name=pk)
+        items = product
+        for item in items:
+            if item.instock>0 :   
+                context ={'product':product}
+                return render(request,'coreapp/cart.html',context)
+            else:
+                return render(request,'coreapp/home')
+   
 
 def about(request):
     return render (request,'coreapp/about.html')
