@@ -5,7 +5,7 @@ from .models import  Smart_phone, Smart_watch, Tabs ,User
 from django.db.models import Q
 from django.views import View
 from itertools import chain
-from django.forms.models import model_to_dict
+
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 
@@ -26,7 +26,7 @@ def login_register(request):
                 messages.error(request,'User does not exits')
         
             user = authenticate(request,username = email,password =password)
-      
+
             if user is not None:
                 login (request,user)
                 return redirect('home')
@@ -170,7 +170,7 @@ def shop_tablets(request):
     return render (request, 'coreapp/productspage.html',context)
 
 
-@login_required(login_url ='login')
+#@login_required(login_url ='login')
 def item(request,pk):
     
         if Tabs.objects.filter(name=pk):
@@ -193,39 +193,6 @@ def item(request,pk):
             return render (request, 'coreapp/item.html', context)
         
 
-
-@login_required(login_url ='login')
-def cart(request,pk):
-    if Smart_phone.objects.filter(name=pk):
-        product = Smart_phone.objects.filter(name=pk)
-        items = product
-        for item in items:
-            if item.instock>0 :   
-                context ={'product':product}
-                return render(request,'coreapp/cart.html',context)
-            else:
-                return render(request,'coreapp/home')
-    
-    elif Tabs.objects.filter(name=pk):
-        product = Tabs.objects.filter(name=pk)
-        items = product
-        for item in items:
-            if item.instock>0 :   
-                context ={'product':product}
-                return render(request,'coreapp/cart.html',context)
-            else:
-                return render(request,'coreapp/home')
-            
-    elif Smart_watch.objects.filter(name=pk):
-        product = Smart_watch.objects.filter(name=pk)
-        items = product
-        for item in items:
-            if item.instock>0 :   
-                context ={'product':product}
-                return render(request,'coreapp/cart.html',context)
-            else:
-                return render(request,'coreapp/home')
-   
 
 def about(request):
     return render (request,'coreapp/about.html')

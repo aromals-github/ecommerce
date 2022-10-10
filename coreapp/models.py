@@ -1,5 +1,6 @@
 
 from datetime import datetime
+from tkinter import CASCADE
 from django.db import models
 from django.core.validators import MaxValueValidator,MinValueValidator
 from django.contrib.auth.models import AbstractUser
@@ -12,6 +13,9 @@ class User(AbstractUser):
     
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = [ 'email' ]
+    
+    def __email__(self):
+        return self.email
     
 class Smart_phone(models.Model):
     phone_id = models.CharField(max_length=10, null=False, primary_key=True, default='')
@@ -27,6 +31,7 @@ class Smart_phone(models.Model):
     camera = models.DecimalField(null=True, max_digits=5, decimal_places=2)
     date_added = models.DateTimeField(default = datetime.now())# has to change to---auto_now_add = True
     ram = models.IntegerField(default=4,null=True,blank=True)
+    
     def __str__(self) :         
         return self.name
 
@@ -74,4 +79,10 @@ class Tabs(models.Model):
     
     def __str__(self) :
         return self.name
+    
+
+
+class Cart(models.Model):
+    user = models.OneToOneField(User, on_delete = models.CASCADE)
+    cart_items = models.CharField(null=True,blank=True,max_length = 999999)
     

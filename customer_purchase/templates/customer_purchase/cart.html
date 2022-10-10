@@ -6,11 +6,12 @@
 <section class="cart__section" style="height: 650px;">
     <div>
         <img src=" " alt="" class="cart__img">
-        <div class="product__info" ">
-            {% for product in product %}
-                {{product.name}}
-
-            {% endfor %}
+        <div class="product__info" >
+            <div>
+                {% for product in product %}
+                    {{product.name}}
+                {% endfor %}
+            </div>
         </div>
     </div>
     

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Smart_phone,Smart_watch,Tabs,User
+from .models import Smart_phone,Smart_watch,Tabs,User,Cart
 
 
 @admin.register(User)
@@ -18,3 +18,8 @@ class Smartwatch(admin.ModelAdmin):
 @admin.register(Tabs)
 class Tablets(admin.ModelAdmin):
     list_display = ('brand','name','colour','storage')
+    
+    
+@admin.register(Cart)
+class Cart(admin.ModelAdmin):
+    list_display = ()
