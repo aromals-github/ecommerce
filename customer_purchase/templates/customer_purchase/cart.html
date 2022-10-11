@@ -15,20 +15,23 @@
             <tbody>
                 <form action="">
                 <tr>
-                    <td style="width: 20%;"><img src=""></td>
+                    {%for product in product%}
+                    <td style="width: 20%;"><img style="width: 350px;" src="{{ product.images.url }}"></td>
                     <td style="width: 60%;">
-                        <h2>Product Title</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        
+                        <h2>{{product.name|upper}}</h2>
+                        <p>{{ product.brand| upper }}</p>
                         <br>
-                        <h3>Price: Rs.1200</h3>
+                        <h3>Price:RS.{{product.price}}</h3>
                         <br>
                         <a href="">x</a> Remove
                     </td>
                     <td class="qty" style="width: 15%;">
-
+                    
                         <br><br>
-                        <h3>Rs.1200</h3>
+                        <h3></h3>
                     </td>
+                {% endfor %}
                 </tr>
             </form>
             </tbody>	

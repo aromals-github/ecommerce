@@ -3,6 +3,9 @@ from django.shortcuts import redirect, render
 from django.views import View
 from coreapp.views import login_register 
 from coreapp.models import Smart_phone,Tabs,Smart_watch,User
+from customer_purchase.models import Cart
+from .forms import Cart_form
+
 
 class CartView(View):
     
@@ -10,13 +13,19 @@ class CartView(View):
         if request.user.is_authenticated:
             if Smart_phone.objects.filter(name=pk):
                 product = Smart_phone.objects.filter(name=pk)
-                items = product
-                for item in items:
+                item = product
+                for item in item:
                     if item.instock>0 :   
+                        Cart.objects.create(
+                            user=request.user,
+                            products = item
+                        )
                         context ={'product':product}
                         return render(request,'customer_purchase/cart.html',context)
-                    else:
-                        return render(request,'customer_purchase/home')
+                        
+            
+            
+            
                     
             elif Tabs.objects.filter(name=pk):
                 product = Tabs.objects.filter(name=pk)
