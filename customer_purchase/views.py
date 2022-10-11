@@ -15,17 +15,20 @@ class CartView(View):
                 product = Smart_phone.objects.filter(name=pk)
                 item = product
                 for item in item:
-                    if item.instock>0 :   
-                        Cart.objects.create(
-                            user=request.user,
-                            products = item
-                        )
+                    if item.instock > 0 :
+                        user =  Cart.objects.filter(user=request.user)
+                        if request.user == user: 
+                            Cart.objects.create(
+                                products = item
+                            )
+                        else:
+                            Cart.objects.create(
+                                user= request.user,
+                                products = item
+                            )
                         context ={'product':product}
                         return render(request,'customer_purchase/cart.html',context)
                         
-            
-            
-            
                     
             elif Tabs.objects.filter(name=pk):
                 product = Tabs.objects.filter(name=pk)
