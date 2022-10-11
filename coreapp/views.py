@@ -37,7 +37,7 @@ def login_register(request):
             form = UserCreation(request.POST)
             if form.is_valid():
                     user = form.save(commit= True)
-                    user.username = user.username.lower()
+                    user.username = form.cleaned_data.user.username.lower()
                     user.save()
                     login(request,user)
                     return redirect('home')
@@ -170,7 +170,7 @@ def shop_tablets(request):
     return render (request, 'coreapp/productspage.html',context)
 
 
-#@login_required(login_url ='login')
+# 
 def item(request,pk):
     
         if Tabs.objects.filter(name=pk):

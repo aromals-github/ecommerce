@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Smart_phone,Smart_watch,Tabs,User,Cart
+from .models import Smart_phone,Smart_watch,Tabs,User
 
 
 @admin.register(User)
@@ -20,6 +20,3 @@ class Tablets(admin.ModelAdmin):
     list_display = ('brand','name','colour','storage')
     
     
-@admin.register(Cart)
-class Cart(admin.ModelAdmin):
-    list_display = ()

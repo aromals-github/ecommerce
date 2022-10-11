@@ -17,6 +17,7 @@ class User(AbstractUser):
     def __email__(self):
         return self.email
     
+    
 class Smart_phone(models.Model):
     phone_id = models.CharField(max_length=10, null=False, primary_key=True, default='')
     brand = models.CharField(max_length=30, null=False)
@@ -82,7 +83,4 @@ class Tabs(models.Model):
     
 
 
-class Cart(models.Model):
-    user = models.OneToOneField(User, on_delete = models.CASCADE)
-    cart_items = models.CharField(null=True,blank=True,max_length = 999999)
     

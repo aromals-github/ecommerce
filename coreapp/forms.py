@@ -9,10 +9,8 @@ class UserCreation(UserCreationForm):
         model = User
         fields =['username', 'email', 'password1', 'password2']
         
-
-
 class UserLogIn(ModelForm):
     
     class Meta:
-      model = User
-      fields = ['username','email']
+        model = User
+        fields = ['username','email']
