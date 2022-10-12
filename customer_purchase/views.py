@@ -31,23 +31,39 @@ class CartView(View):
                     
             elif Tabs.objects.filter(name=pk):
                 product = Tabs.objects.filter(name=pk)
-                items = product
-                for item in items:
-                    if item.instock>0 :   
-                                context ={'product':product}
-                                return render(request,'customer_purchase/cart.html',context)
+                item = product
+                for item in item:
+                    if item.instock > 0 :
+                        user =  Cart.objects.filter(user=request.user)
+                        print(user)
+                        Cart.objects.create(
+                                products = item
+                            )
                     else:
-                        return render(request,'customer_purchase/home.html')
+                        Cart.objects.create(
+                                user = request.user,
+                                products = item
+                            )
+                    context ={'product':product}
+                    return render(request,'customer_purchase/cart.html',context)
                             
             elif Smart_watch.objects.filter(name=pk):
                 product = Smart_watch.objects.filter(name=pk)
-                items = product
-                for item in items:
-                    if item.instock>0 :   
-                        context ={'product':product}
-                        return render(request,'customer_purchase/cart.html',context)
+                item = product
+                for item in item:
+                    if item.instock > 0 :
+                        user =  Cart.objects.filter(user=request.user)
+                        print(user)
+                        Cart.objects.create(
+                                products = item
+                            )
                     else:
-                        return render(request,'customer_purchase/home')
+                        Cart.objects.create(
+                                user = request.user,
+                                products = item
+                            )
+                    context ={'product':product}
+                    return render(request,'customer_purchase/cart.html',context)
  
         else:
             return redirect('login')
