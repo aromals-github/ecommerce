@@ -17,7 +17,25 @@
     <!-- Slick -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/slick.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}">
-
+    <script type="text/javascript">
+        var user = '{{request.user}}'
+        function getToken(name){
+            var  cookieValue= null;
+            if (document.cookie && document.cookie !== ''){
+                var cookies =document.cookie.split(',');
+                for (var i = 0; i < cookies.length; i++){
+                    var cookie= cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) ===(name + '='))
+                    {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length+1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken =getToken('csrftoken');
+    </script>
 
 </head> 
 <body>
@@ -218,7 +236,7 @@
     <script src="{% static 'js/jquery-migrate-1.2.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'js/templatemo.js' %}"></script>
-    
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
 
      <!-- Start Slider Script -->
      <script src="{% static 'js/slick.min.js' %}"></script>

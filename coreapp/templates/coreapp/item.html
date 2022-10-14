@@ -127,12 +127,11 @@
                             </ul>
                         </div>
 
-                       
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                            <a href="{% url 'cart' product.name %}">
-                                                <input style="text-align: center;" type="submit" class="btn btn-success btn-lg" name="submit" value="Add to Cart" ></input>
-                                            </a> 
+                                            
+                                        <button data-product="{{product.name}}" data-action="add" class="btn btn-success btn-lg update-cart"  >add to cart</button>
+                                            
                                     </div>
                                     <div class="col d-grid">
                                         <a href="#">
