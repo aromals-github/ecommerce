@@ -14,25 +14,26 @@
             </thead>
             <tbody>
                 <form action="">
+                    {%for item in items%}
                 <tr>
-                    {%for product in items%}
-                    <td style="width: 20%;"><img style="width: 350px;" src="{{ product.images.url }}"></td>
+                    
+                    <td style="width: 20%;"><img style="width: 350px;" src="{{ item.product.images.url }}"></td>
                     <td style="width: 60%;">
                         
-                        <h2>{{product.name|upper}}</h2>
-                        <p>{{ product.brand| upper }}</p>
+                        <h2>{{ item.product.name|upper}}</h2>
+                        <p>{{ item.product.brand| upper }}</p>
                         <br>
-                        <h3>Price:RS.{{product.price}}</h3>
+                        <h3>Price:RS.{{ item.product.price}}</h3>
                         <br>
                         <a href="">x</a> Remove
                     </td>
                     <td class="qty" style="width: 15%;">
-                    
                         <br><br>
                         <h3></h3>
                     </td>
-                {% endfor %}
+               
                 </tr>
+                {% endfor %}
             </form>
             </tbody>	
         </table>
@@ -41,10 +42,10 @@
         <div class="checkout-total">
             <h3>Cart Summary</h3>
             <ul>
-                <li>Number of Products x 15</li>
-                <li>Number of items x 20</li>
+                <!-- <li>Number of Products x 15</li>
+                <li>Number of items x 20</li> -->
                 <hr>
-                <li>Cart Total <span style="float: right;">Rs.1200</span></li>
+                <li>Cart Total <span style="float: right;">RS.{{order.get_cart_total}}</span></li>
                 <li><a href="">Go to Checkout</a></li>
             </ul>
         </div>

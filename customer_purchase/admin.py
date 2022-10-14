@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Order,OrderItem,ShippingAddress
+from .models import *
 # Register your models here.
 
 @admin.register(Order)
@@ -14,3 +14,8 @@ class OrderItem(admin.ModelAdmin):
 @admin.register(ShippingAddress)
 class ShippingAddress(admin.ModelAdmin):
     list_display = ("customer","address")
+    
+
+@admin.register(Customer)
+class Customer(admin.ModelAdmin):
+    list_display = ("user","name")
