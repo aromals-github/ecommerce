@@ -9,6 +9,7 @@ from ecommerce.settings import MEDIA_ROOT
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('coreapp.urls')),
+    path('cart/',include('customer_purchase.urls'))
 ]
 
 

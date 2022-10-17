@@ -8,7 +8,7 @@ import json
 
 class CartView(View):
     
-    def get(self,request,pk): 
+    def get(self,request): 
         if request.user.is_authenticated:
             customer = request.user.customer
             order, created = Order.objects.get_or_create(customer=customer)
@@ -20,15 +20,28 @@ class CartView(View):
 
     
 def updateItem(request,pk):
-    # data = json.loads(request.data)
-    # productId = data['productId']
-    # action = data['action']
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
     
-    # print('Action:', action)
-    # print('productId:', productId)
+    print('Action:', action)
+    print('productId:', productId)
     
-    # customer = request.user.customer
-    # product = Smart_phone.objects.get(name=productId)
+    customer = request.user.customer
+    
+    
+    product = Smart_phone.objects.get(name=productId) 
+    
+    order, created = Order.objects.get_or_create(customer=customer)
+    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+    
+    if action ==  'add':
+        orderItem.quantity =  (orderItem.quantity +1)
+    elif action == 'remove':
+        orderItem.quantity = (orderItem.quantity -1)
+    orderItem.save()
+    if orderItem.quantity <= 0:
+        orderItem.delete()
     return JsonResponse("Item was added", safe=False)
 
 
