@@ -19,11 +19,17 @@ class CartView(View):
         return render(request, 'customer_purchase/cart.html',context) 
 
     
-def updateItem(request):
-    data = json.loads(request.data)
-    productId = data['productId']
-    action = data['action']
-    print('action:', action)
-    print('productId:', productId)
-
+def updateItem(request,pk):
+    # data = json.loads(request.data)
+    # productId = data['productId']
+    # action = data['action']
+    
+    # print('Action:', action)
+    # print('productId:', productId)
+    
+    # customer = request.user.customer
+    # product = Smart_phone.objects.get(name=productId)
     return JsonResponse("Item was added", safe=False)
+
+
+

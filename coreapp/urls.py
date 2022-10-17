@@ -16,6 +16,6 @@ urlpatterns =[
     path ('shop/smartphones/<str:pk>/',views.brand_smartphones,name = "branded_smartphones"),
     path ('shop/smartwatches/<str:pk>/',views.brand_watches,name = "branded_watches"),
     path ('shop/tablets/<str:pk>/',views.brand_tabs,name = "branded_tabs"),
-    path ('shop/item/<str:pk>/cart/',include('customer_purchase.urls')),
+    path ('shop/item/<str:pk>/updateitem/',include('customer_purchase.urls'), name="cart_section"),
 
 ]

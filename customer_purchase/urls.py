@@ -3,6 +3,6 @@ from. import views
 
 urlpatterns = [
     
-    path('',views.CartView.as_view(), name ="cart"),
-    path('updateitem/',views.updateItem, name ="itemcart")
+    path('',views.updateItem, name ="updatecart"),
+    path('cart/',views.CartView.as_view(), name ="cart"),
 ]

@@ -12,7 +12,7 @@ for(var i = 0; i< updateButtons.length; i++){
             console.log("not logged in")
         }
         else{
-            console.log(' user is logged in, start purchasing')
+            updateUserOrder(productId, action)
         }
     })
 }
@@ -21,8 +21,9 @@ for(var i = 0; i< updateButtons.length; i++){
 function updateUserOrder(productId, action){
     console.log('user is logged in ,sending data ...')
     var url = 'updateitem/'
+    // console.log(url)
     fetch(url, {
-        method:'POST',
+        method:'POST', 
         headers:{
             'Content-Type':'application/json',
             'X-CSRFToken' : csrftoken,
@@ -30,11 +31,11 @@ function updateUserOrder(productId, action){
         body:JSON.stringify({'productId':productId, 'action':action })
     })
 
-    .then((response)=>{
+    .then((response) =>{
         return response.json()
     })
 
-    .then((data)=>{
+    .then((data) =>{
         console.log('data:', data)
     })
 }
