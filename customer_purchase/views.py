@@ -29,17 +29,25 @@ def updateItem(request,pk):
     
     customer = request.user.customer
     
+    if Smart_phone.objects.get(name=productId)!=None:
+        product_phone =  Smart_phone.objects.get(name=productId)
+        order, created = Order.objects.get_or_create(customer=customer)
+        orderItem, created = OrderItem.objects.get_or_create(order=order, product_phone=product_phone)
     
-    product = Smart_phone.objects.get(name=productId) 
-    
-    order, created = Order.objects.get_or_create(customer=customer)
-    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
-    
+    elif Smart_watch.objects.get(name=productId)!=None:
+        product_watch =  Smart_watch.objects.get(name=productId)
+        print(product_watch)
+        order, created = Order.objects.get_or_create(customer=customer)
+        orderItem, created = OrderItem.objects.get_or_create(order=order, product_watch=product_watch) 
+
     if action ==  'add':
         orderItem.quantity =  (orderItem.quantity +1)
+            
     elif action == 'remove':
         orderItem.quantity = (orderItem.quantity -1)
+            
     orderItem.save()
+        
     if orderItem.quantity <= 0:
         orderItem.delete()
     return JsonResponse("Item was added", safe=False)

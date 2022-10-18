@@ -1,7 +1,4 @@
 
-from email.policy import default
-from tkinter import CASCADE
-
 from django.db import models
 from coreapp.models import *
 
@@ -33,7 +30,8 @@ class Order(models.Model):
     
     
 class OrderItem(models.Model):
-    product = models.ForeignKey(Smart_phone, on_delete=models.SET_NULL,null=True)
+    product_phone = models.ForeignKey(Smart_phone, on_delete=models.SET_NULL,null=True)
+    product_watch = models.ForeignKey(Smart_watch, on_delete=models.SET_NULL,null=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True,null= True)
     date_added = models.DateTimeField(auto_now_add=True)
     quantity = models.IntegerField(default = 1 ,null = True ,blank =True)

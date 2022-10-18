@@ -8,7 +8,7 @@ class Order(admin.ModelAdmin):
     
 @admin.register(OrderItem)
 class OrderItem(admin.ModelAdmin):
-    list_display = ("product","order")
+    list_display = ("product_phone","order")
     
     
 @admin.register(ShippingAddress)
