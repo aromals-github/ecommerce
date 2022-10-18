@@ -1,5 +1,4 @@
 
-from unicodedata import category
 from django.shortcuts import redirect, render
 from django.views import View
 from coreapp.models import *
@@ -16,7 +15,7 @@ class CartView(View):
             items = order.orderitem_set.all()
         else:
             return redirect('login')  
-        context ={"items":items,"order":order }
+        context ={"items":items,"order":order}
         return render(request, 'customer_purchase/cart.html',context) 
 
     

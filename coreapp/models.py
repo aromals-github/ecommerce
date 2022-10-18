@@ -101,4 +101,3 @@ class Tabs(models.Model):
     
 
 
-    
