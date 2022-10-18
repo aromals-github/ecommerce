@@ -30,8 +30,9 @@ class Order(models.Model):
     
     
 class OrderItem(models.Model):
-    product_phone = models.ForeignKey(Smart_phone, on_delete=models.SET_NULL,null=True)
-    product_watch = models.ForeignKey(Smart_watch, on_delete=models.SET_NULL,null=True)
+    product_phone = models.ForeignKey(Smart_phone, on_delete=models.SET_NULL,null=True, blank=True)
+    product_watch = models.ForeignKey(Smart_watch, on_delete=models.SET_NULL,null=True,blank=True)
+    product_tab = models.ForeignKey(Tabs, on_delete=models.SET_NULL,null=True,blank=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True,null= True)
     date_added = models.DateTimeField(auto_now_add=True)
     quantity = models.IntegerField(default = 1 ,null = True ,blank =True)

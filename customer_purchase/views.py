@@ -1,4 +1,5 @@
 
+from unicodedata import category
 from django.shortcuts import redirect, render
 from django.views import View
 from coreapp.models import *
@@ -29,16 +30,20 @@ def updateItem(request,pk):
     
     customer = request.user.customer
     
-    if Smart_phone.objects.get(name=productId)!=None:
+    if  Smart_phone.objects.filter(name=productId):
         product_phone =  Smart_phone.objects.get(name=productId)
         order, created = Order.objects.get_or_create(customer=customer)
         orderItem, created = OrderItem.objects.get_or_create(order=order, product_phone=product_phone)
     
-    elif Smart_watch.objects.get(name=productId)!=None:
+    elif Smart_watch.objects.filter(name=productId):
         product_watch =  Smart_watch.objects.get(name=productId)
-        print(product_watch)
         order, created = Order.objects.get_or_create(customer=customer)
-        orderItem, created = OrderItem.objects.get_or_create(order=order, product_watch=product_watch) 
+        orderItem, created = OrderItem.objects.get_or_create(order=order, product_watch=product_watch)
+    
+    elif Tabs.objects.filter(name=productId):
+        product_tab =  Tabs.objects.get(name=productId)
+        order, created = Order.objects.get_or_create(customer=customer)
+        orderItem, created = OrderItem.objects.get_or_create(order=order, product_tab=product_tab)  
 
     if action ==  'add':
         orderItem.quantity =  (orderItem.quantity +1)
