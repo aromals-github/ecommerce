@@ -17,13 +17,25 @@
                     {%for item in items%}
                 <tr>
                     
-                <td style="width: 20%;"><img style="width: 350px;" src="{{ item.product_phone.images.url }} {{ item.product_watch.images.url }}"></td>
+                <td style="width: 20%;"><img style="width: 350px;" src="{{ item.product_phone.images.url }}
+                    {{ item.product_watch.images.url }}
+                    {{ item.product_tab.images.url }}
+                    "></td>
                     <td style="width: 60%;">
                         
-                        <h2> {{ item.product_phone.name | upper }} {{ item.product_watch.name | upper }}</h2>
-                        <p>  {{ item.product_phone.brand | upper }} {{ item.product_watch.brand | upper }}</p>
+                        <h2> {{ item.product_phone.name | upper }}
+                            {{ item.product_watch.name | upper }}
+                            {{ item.product_tab.name | upper }}
+                            </h2>
+                        <p> {{ item.product_phone.brand | upper }} 
+                            {{ item.product_watch.brand | upper }}
+                            {{ item.product_tab.brand | upper }}
+                        </p>
                         <br>
-                        <h3>Price:RS.{{ item.product_phone.price }} {{ item.product_watch.price }}</h3>
+                        <h3>Price:RS.{{ item.product_phone.price }} 
+                            {{ item.product_watch.price }}
+                            {{ item.product_tab.price }}
+                        </h3>
                         <br>
                         <a href="">x</a> Remove
                     </td>
@@ -31,7 +43,7 @@
                         <br><br>
                         <h3></h3>
                     </td>
-               
+
                 </tr>
                 {% endfor %}
             </form>
@@ -45,7 +57,7 @@
                 <!-- <li>Number of Products x 15</li>
                 <li>Number of items x 20</li> -->
                 <hr>
-                <li>Cart Total <span style="float: right;">RS.</span></li>
+                <li>Cart Total <span style="float: right;">RS.{{get_total}}</span></li>
                 <li><a href="">Go to Checkout</a></li>
             </ul>
         </div>

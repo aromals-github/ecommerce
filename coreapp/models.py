@@ -25,7 +25,7 @@ class Smart_phone(models.Model):
     colour = models.CharField(max_length=10, null= True)
     images = models.ImageField(upload_to="phone_image", blank=True)
     storage = models.IntegerField(default=128, validators=[MaxValueValidator(512), MinValueValidator(128)])
-    price = models.DecimalField(max_digits=15, decimal_places=2, default=0.0)   
+    price = models.IntegerField(default=0)   
     instock =models.IntegerField(null=True)
     description =models.CharField(max_length=1000, null=True)
     operating_system = models.CharField(max_length=30, null=True)
@@ -35,6 +35,15 @@ class Smart_phone(models.Model):
     
     def __str__(self) :         
         return self.name
+    
+    def save(self, *args,**kwargs):
+        if self.images:
+            super().save(*args, **kwargs)
+            img = Image.open(self.images.path)
+            if img.height>700 :
+                output_size =(480,600)
+                img.thumbnail(output_size)
+                img.save(self.images.path)
 
     class Meta:
         verbose_name_plural = "Smart Phones"
@@ -47,11 +56,20 @@ class Smart_watch(models.Model):
     colour = models.CharField( max_length=10, null= True)
     images = models.ImageField( upload_to="watch_image", blank=True)
     size = models.IntegerField()
-    price = models.DecimalField( max_digits=15, decimal_places=2, default=0)    
+    price = models.IntegerField(default=0)    
     instock = models.IntegerField( null=True)
     description = models.CharField( max_length=1000,null=True)
     date_added = models.DateTimeField(default = datetime.now())# has to change to---auto_now_add = True
 
+    def save(self, *args,**kwargs):
+        if self.images:
+            super().save(*args, **kwargs)
+            img = Image.open(self.images.path)
+            if img.height>700 :
+                output_size =(480,600)
+                img.thumbnail(output_size)
+                img.save(self.images.path)
+                
     def __str__(self) :
         return self.name
         
@@ -62,7 +80,7 @@ class Tabs(models.Model):
     colour = models.CharField( max_length=10, null= True)
     images = models.FileField( upload_to="tablet_image")
     display_size = models.IntegerField(null=True)
-    price = models.DecimalField(max_digits=15,decimal_places=2,default=0.0,null=True) 
+    price = models.IntegerField(default=0) 
     instock = models.IntegerField(null=True)
     storage = models.IntegerField(default=128,validators=[MinValueValidator(128),MaxValueValidator(1024)])
     description =models.CharField(max_length=1000 ,null= True)

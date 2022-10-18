@@ -39,7 +39,10 @@ class OrderItem(models.Model):
     
     @property
     def get_total(self):
-        total = self.product.price * self.quantity
+        total = ((self.product_phone.price * self.quantity) +
+                (self.product_watch.price * self.quantity) +
+                (self.product_tab.price * self. quantity)
+                ) 
         return total
 
     
